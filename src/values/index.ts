@@ -1,4 +1,5 @@
 import COLORS from './colors'
-import SIZES from './sizes'
+import FONTS from './fonts'
+import SCREENS from './screens'
 
-export { COLORS, SIZES }
+export { COLORS, FONTS, SCREENS }
