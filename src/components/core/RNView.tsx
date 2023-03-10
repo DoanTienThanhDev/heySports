@@ -31,7 +31,9 @@ interface IRNView {
   borderRadius?: number,
   borderColor?: string,
   borderWidth?: number,
-  isRow?: boolean
+  isRow?: boolean,
+  style?: any,
+  flex?: number,
 }
 
 const RNView = ({
@@ -64,11 +66,14 @@ const RNView = ({
   borderColor,
   borderWidth,
   isRow,
+  style,
+  flex,
   ...more
 }: IRNView) => {
   return (
     <>
       <View style={[
+        style && style,
         isPage && styles.container,
         fill && styles.fill,
         center && styles.center,
@@ -92,7 +97,8 @@ const RNView = ({
         !!pVer && { paddingVertical: pVer },
         !!mHoz && { marginHorizontal: pHoz },
         !!mVer && { marginVertical: pVer },
-        !!borderRadius && { borderRadius: borderRadius, borderColor: borderColor || COLORS.border, borderWidth: borderWidth, },
+        !!borderRadius && { borderRadius: borderRadius, borderColor: borderColor || COLORS.border, borderWidth: borderWidth },
+        flex && { flex: flex },
         loading && { backgroundColor: bgLoading || COLORS.bgLoading, opacity: 0.8 },
         { ...more }
       ]

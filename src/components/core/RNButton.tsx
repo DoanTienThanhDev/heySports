@@ -2,6 +2,7 @@ import { StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native'
 import React from 'react'
 
 import RNText from './RNText'
+import RNIcon from './RNIcon'
 
 import { COLORS, FONTS } from '../../values'
 
@@ -70,7 +71,7 @@ const RNButton = ({
         loading ?
           <ActivityIndicator size={'small'} color={loadingColor || COLORS.bgPage} /> :
           icon ?
-            <RNText>{'s'}</RNText> :
+            <RNIcon name={icon} size={FONTS.s24} /> :
             <RNText fontWeight='bold' color={txtColor || COLORS.bgPage} size={FONTS.s16}>{title}</RNText>
       }
     </TouchableOpacity>
@@ -81,6 +82,7 @@ export default RNButton
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 16,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

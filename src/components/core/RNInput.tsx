@@ -1,7 +1,7 @@
-import { KeyboardTypeOptions, StyleSheet, TextInput } from 'react-native'
+import { KeyboardTypeOptions, Pressable, StyleSheet, TextInput } from 'react-native'
 import React, { useState } from 'react'
 
-import { RNButton, RNText, RNView } from './index'
+import { RNIcon, RNText, RNView } from './index'
 
 import { COLORS, FONTS } from '../../values'
 
@@ -19,6 +19,7 @@ interface IRNInput {
   mLeft?: number,
   mRight?: number,
   mBottom?: number,
+  lines?: number,
   onChangeValue: (value: string) => void,
   onPressIcon?: () => void
 }
@@ -37,6 +38,7 @@ const RNInput = ({
   mBottom,
   mLeft,
   mRight,
+  lines,
   onChangeValue,
   onPressIcon
 }: IRNInput) => {
@@ -65,21 +67,23 @@ const RNInput = ({
           <RNText size={14} color={COLORS.primaryText} fontWeight="600">{title}</RNText>}
         <TextInput
           value={value}
-          style={[styles.container, { backgroundColor: COLORS.border, flex: 1, }]}
+          style={styles.container}
           keyboardType={type}
           secureTextEntry={isHideValue}
           placeholder={placeholder}
           onChangeText={onChangeValue}
           onFocus={() => { setFocus(true) }}
           onBlur={() => { setFocus(false) }}
+          autoCapitalize="none"
+          numberOfLines={lines}
+          placeholderTextColor={COLORS.secondText}
         />
       </RNView>
-      {isPassword || !!icon && <RNButton
-        onPress={() => { icon && onPressIcon ? onPressIcon() : setHideValue(!isHideValue) }}
-        title=""
-        bgColor={COLORS.bgLoading}
-        icon={"hide"}
-        pHoz={12} />}
+      {(isPassword || !!icon) &&
+        <Pressable style={styles.btnRight} onPress={() => { icon && onPressIcon ? onPressIcon() : setHideValue(!isHideValue) }}>
+          <RNIcon name={icon ? icon : isHideValue ? 'eye' : 'eye-slash'} size={18} />
+        </Pressable>
+      }
     </RNView>
   )
 }
@@ -88,7 +92,11 @@ export default RNInput
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     fontSize: FONTS.s14,
-    fontWeight: "400"
+    fontWeight: "400",
+  },
+  btnRight: {
+    paddingHorizontal: 5
   }
 })

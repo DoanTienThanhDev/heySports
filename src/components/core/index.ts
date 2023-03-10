@@ -3,11 +3,15 @@ import RNView from './RNView'
 import RNText from './RNText'
 import RNButton from './RNButton'
 import RNInput from './RNInput'
+import RNIcon from './RNIcon';
+import RNImage from './RNImage';
 
 export {
   RNContainer,
   RNView,
   RNText,
   RNButton,
-  RNInput
+  RNInput,
+  RNIcon,
+  RNImage
 }
