@@ -2,7 +2,7 @@ import { Alert, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 import { RNView, RNText, RNIcon } from 'components/core';
-import { COLORS, FONTS } from '../../themes';
+import { COLORS, FONTS } from 'themes';
 
 interface IHeader {
   title?: string,

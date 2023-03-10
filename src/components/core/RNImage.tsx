@@ -18,7 +18,7 @@ const RNImage = ({ w, h, src, size }: IRNImage) => {
   }
 
   return (
-    <Image source={getSource()} style={[{ width: size || w, height: size || h }]} resizeMethod="auto" resizeMode='center' />
+    <Image source={getSource()} style={[{ width: size || w, height: size || h }]} resizeMethod="auto" resizeMode="contain" />
   )
 }
 

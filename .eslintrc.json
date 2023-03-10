@@ -16,7 +16,10 @@
     "react/no-did-mount-set-state": 0,
     "no-useless-escape": 0,
     "react-hooks/exhaustive-deps": 0,
-    "react/no-did-update-set-state": 0
+    "react/no-did-update-set-state": 0,
+    "eqeqeq": "off",
+    "curly": "warn",
+    "quotes": ["error", "double"]
   },
   "settings": {
     "import/resolver": "react-native"

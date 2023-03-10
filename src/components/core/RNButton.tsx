@@ -4,7 +4,7 @@ import React from 'react'
 import RNText from './RNText'
 import RNIcon from './RNIcon'
 
-import { COLORS, FONTS } from '../../themes'
+import { COLORS, FONTS } from 'themes'
 
 interface IRNButton {
   title: string,
@@ -24,6 +24,7 @@ interface IRNButton {
   mBottom?: number,
   pHoz?: number,
   icon?: string,
+  mHoz?: number,
   onPress: () => void
 }
 
@@ -45,6 +46,7 @@ const RNButton = ({
   mRight,
   icon,
   pHoz,
+  mHoz,
   onPress,
   ...more
 }: IRNButton) => {
@@ -62,6 +64,7 @@ const RNButton = ({
       mLeft && { marginLeft: mLeft },
       mRight && { marginRight: mRight },
       pHoz && { paddingHorizontal: pHoz },
+      mHoz && { marginHorizontal: mHoz },
       { ...more }
     ]}
       disabled={disable || loading}

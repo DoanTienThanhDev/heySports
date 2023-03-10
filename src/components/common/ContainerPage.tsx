@@ -2,7 +2,8 @@ import React from 'react'
 
 import { RNContainer, RNView } from 'components/core'
 import Header from './Header'
-import { COLORS } from '../../themes'
+
+import { COLORS } from 'themes'
 
 interface IContainerPage {
   children: React.ReactNode,

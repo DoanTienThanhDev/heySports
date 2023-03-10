@@ -1,4 +1,4 @@
-import { StyleSheet, View, ActivityIndicator } from 'react-native'
+import { StyleSheet, View, ActivityIndicator, FlexStyle } from 'react-native'
 import React from 'react'
 
 import { COLORS, SCREENS } from 'themes'
@@ -34,6 +34,8 @@ interface IRNView {
   isRow?: boolean,
   style?: any,
   flex?: number,
+  hozContent?: FlexStyle['alignItems'],
+  verContent?: FlexStyle['justifyContent']
 }
 
 const RNView = ({
@@ -68,6 +70,8 @@ const RNView = ({
   isRow,
   style,
   flex,
+  verContent,
+  hozContent,
   ...more
 }: IRNView) => {
   return (
@@ -99,6 +103,8 @@ const RNView = ({
         !!mVer && { marginVertical: pVer },
         !!borderRadius && { borderRadius: borderRadius, borderColor: borderColor || COLORS.border, borderWidth: borderWidth },
         flex && { flex: flex },
+        hozContent && { alignContent: verContent },
+        verContent && { justifyContent: hozContent },
         loading && { backgroundColor: bgLoading || COLORS.bgLoading, opacity: 0.8 },
         { ...more }
       ]

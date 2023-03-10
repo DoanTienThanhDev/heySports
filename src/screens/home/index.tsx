@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 
 import { ContainerPage } from 'components/common';
 import { RNButton, RNImage, RNInput, RNText, RNView } from 'components/core';
-import { COLORS, SCREENS } from '../../themes';
-import { IMAGES } from '../../assets';
-import { imgLogo } from '../../assets/images';
+import { COLORS, SCREENS } from 'themes';
+import { IMAGES } from 'assets';
 
 const Home = ({ componentId }: { componentId: string }) => {
   const [email, setEmail] = React.useState<boolean>(false)
