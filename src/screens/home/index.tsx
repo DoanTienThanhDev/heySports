@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { ContainerPage } from 'components/common';
 import { RNButton, RNImage, RNInput, RNText, RNView } from 'components/core';
-import { COLORS, SCREENS } from '../../values';
+import { COLORS, SCREENS } from '../../themes';
 import { IMAGES } from '../../assets';
 import { imgLogo } from '../../assets/images';
 

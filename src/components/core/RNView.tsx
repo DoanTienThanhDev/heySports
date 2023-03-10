@@ -1,7 +1,7 @@
 import { StyleSheet, View, ActivityIndicator } from 'react-native'
 import React from 'react'
 
-import { COLORS, SCREENS } from 'values'
+import { COLORS, SCREENS } from 'themes'
 interface IRNView {
   children?: React.ReactNode,
   fill?: boolean,

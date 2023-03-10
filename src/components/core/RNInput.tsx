@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 import { RNIcon, RNText, RNView } from './index'
 
-import { COLORS, FONTS } from '../../values'
+import { COLORS, FONTS } from '../../themes'
 
 interface IRNInput {
   title: string,

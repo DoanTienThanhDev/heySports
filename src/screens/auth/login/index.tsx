@@ -5,7 +5,7 @@ import { RNButton, RNImage, RNInput, RNText, RNView } from 'components/core';
 import { ContainerPage } from 'components/common';
 
 import { IMAGES } from 'assets';
-import { COLORS, SCREENS } from '../../../values';
+import { COLORS, SCREENS } from '../../../themes';
 
 
 

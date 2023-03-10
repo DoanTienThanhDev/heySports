@@ -1,7 +1,7 @@
 import { StyleSheet, Text } from 'react-native'
 import React from 'react'
 
-import { COLORS, FONTS } from '../../values'
+import { COLORS, FONTS } from '../../themes'
 
 interface IRNText {
   size?: number,

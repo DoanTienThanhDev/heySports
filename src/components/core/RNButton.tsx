@@ -4,7 +4,7 @@ import React from 'react'
 import RNText from './RNText'
 import RNIcon from './RNIcon'
 
-import { COLORS, FONTS } from '../../values'
+import { COLORS, FONTS } from '../../themes'
 
 interface IRNButton {
   title: string,

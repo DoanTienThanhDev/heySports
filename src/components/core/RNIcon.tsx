@@ -4,7 +4,7 @@ import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-import { FONTS } from '../../values';
+import { FONTS } from '../../themes';
 
 interface IRNIcon {
   name: string,

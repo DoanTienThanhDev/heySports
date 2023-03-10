@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet } from 'react-native'
 import React from 'react'
 
-import { COLORS } from '../../values'
+import { COLORS } from '../../themes'
 
 interface IRNContainer {
   children: React.ReactNode,
