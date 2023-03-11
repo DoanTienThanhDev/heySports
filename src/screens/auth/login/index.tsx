@@ -1,19 +1,19 @@
-import { StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 
-import { RNButton, RNImage, RNInput, RNPressable, RNText, RNView } from 'components/core';
+import { RNButton, RNImage, RNInput, RNText, RNView } from 'components/core';
 import { ContainerPage } from 'components/common';
+import { SocialLogin } from 'components';
 
-import { COLORS, SCREENS, IMAGES, FONTS } from 'themes';
-
-
+import { pushScreen } from 'navigation';
+// import { COLORS, SCREENS, IMAGES, FONTS } from 'themes';
 
 interface ILogin {
-  componentId: string
+  navigation: any
 }
 
-const Login = ({ componentId }: ILogin) => {
-  const [email, setEmail] = useState<string>('');
+const Login = ({ navigation }: ILogin) => {
+
+  const [email, setEmail] = useState<string>('sss');
   const [password, setPassword] = useState<string>('');
 
   const onChangeValue = (text: string, field: string) => {
@@ -24,21 +24,29 @@ const Login = ({ componentId }: ILogin) => {
     }
   }
 
-  const onLogin = () => { }
-
-  const onLoginGoogle = () => {
-
+  const onLogin = () => {
+    pushScreen({ screen: 'Home', navigation })
   }
+
+  const onLoginGoogle = () => { }
 
   const onLoginFacebook = () => { }
 
   const onLoginApple = () => { }
 
+  const onForgotPassword = () => {
+    pushScreen({ screen: 'ForgotPassword', navigation })
+  }
+
+  const onRegister = () => {
+    pushScreen({ screen: 'Register', navigation })
+  }
+
   return (
-    <ContainerPage id={componentId}>
-      <RNView fill center>
-        <RNImage src={IMAGES.imgLogo} size={SCREENS.width / 2.5} />
-        <RNText color={COLORS.primary} fontWeight="600">You are finding, we are finding</RNText>
+    <ContainerPage navigation={navigation} hasInput={true} >
+      <RNView fill center >
+        {/* <RNImage src={IMAGES.imgLogo} size={SCREENS.width / 2.5} /> */}
+        {/* <RNText color={COLORS.primary} fontWeight="600">You are finding, we are finding</RNText> */}
       </RNView>
       <RNView flex={2} pHoz={24}>
         <RNInput
@@ -54,20 +62,31 @@ const Login = ({ componentId }: ILogin) => {
           placeholder={'Please enter your password'}
           value={password}
         />
+        <RNText
+          // size={FONTS.s14}
+          fontWeight={'400'}
+          underLine mTop={6}
+          // color={COLORS.primary}
+          onPress={onForgotPassword}
+        >Forgot password</RNText>
         <RNButton title='Login' onPress={onLogin} mTop={60} />
-
-        <RNView fill verContent='flex-end' hozContent='flex-end'>
-          <RNView isRow mBottom={FONTS.s16}>
-            <RNPressable fill center onPress={onLoginGoogle}>
-              <RNImage src={IMAGES.icGoogle} size={60} />
-            </RNPressable>
-            <RNPressable fill center onPress={onLoginFacebook}>
-              <RNImage src={IMAGES.icFacebook} size={60} />
-            </RNPressable>
-            <RNPressable fill center onPress={onLoginApple}>
-              <RNImage src={IMAGES.icApple} size={60} />
-            </RNPressable>
-          </RNView>
+        <RNView fill mTop={50}>
+          <RNText
+            textAlign='center'
+            mBottom={10}
+          // size={FONTS.s14}
+          // color={COLORS.primaryText}
+          >
+            {/* <RNText color={COLORS.primary} fontWeight='600' onPress={onRegister}>
+              {`Register `}
+            </RNText> */}
+            {`or login with`}
+          </RNText>
+          <SocialLogin
+            onLoginGoogle={onLoginApple}
+            onLoginFacebook={onLoginFacebook}
+            onLoginApple={onLoginApple}
+          />
         </RNView>
       </RNView>
     </ContainerPage>
