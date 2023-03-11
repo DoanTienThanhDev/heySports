@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ImageSourcePropType, ImageProps } from 'react-native'
+import { Image } from 'react-native'
 import React from 'react'
 
 interface IRNImage {
@@ -23,5 +23,3 @@ const RNImage = ({ w, h, src, size }: IRNImage) => {
 }
 
 export default RNImage
-
-const styles = StyleSheet.create({})

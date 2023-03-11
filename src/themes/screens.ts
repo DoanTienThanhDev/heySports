@@ -1,11 +1,10 @@
-import { useWindowDimensions } from 'react-native';
+import { Dimensions } from 'react-native';
+const { width, height, fontScale } = Dimensions.get('screen')
 
-const { width, height, fontScale } = useWindowDimensions()
-
-const SCREENS = {
+const Screens = {
   width,
   height,
   fontScale
 }
 
-export default SCREENS
+export default Screens

@@ -1,9 +1,7 @@
 import { StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native'
 import React from 'react'
 
-import RNText from './RNText'
-import RNIcon from './RNIcon'
-
+import { RNText, RNIcon } from 'components/core';
 import { COLORS, FONTS } from 'themes'
 
 interface IRNButton {

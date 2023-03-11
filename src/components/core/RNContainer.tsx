@@ -1,10 +1,8 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native'
+import { SafeAreaView, StyleSheet, KeyboardAvoidingView, Keyboard } from 'react-native'
 
+import { RNPressable, RNView } from 'components/core';
 import { COLORS } from 'themes'
-import RNPressable from './RNPressable'
-import RNView from './RNView'
-
 interface IRNContainer {
   children: React.ReactNode,
   color?: string,
