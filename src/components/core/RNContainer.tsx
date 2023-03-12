@@ -1,8 +1,9 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, KeyboardAvoidingView, Keyboard } from 'react-native'
+import { SafeAreaView, StyleSheet, Keyboard } from 'react-native'
 
 import { RNPressable, RNView } from 'components/core';
 import { COLORS } from 'themes'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 interface IRNContainer {
   children: React.ReactNode,
   color?: string,
@@ -11,25 +12,38 @@ interface IRNContainer {
 }
 
 const RNContainer = ({ children, color, isLoading, hasInput }: IRNContainer) => {
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    }
-  })
+
+  if (hasInput) {
+    return (
+      <KeyboardAwareScrollView
+        keyboardShouldPersistTaps={'handled'}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.container}
+      >
+        <RNPressable fill onPress={Keyboard.dismiss}>
+          <RNView loading={isLoading} fill>
+            <SafeAreaView style={[styles.container, !isLoading && { backgroundColor: color || COLORS.bgPage }]}>
+              {children}
+            </SafeAreaView>
+          </RNView>
+        </RNPressable>
+      </KeyboardAwareScrollView>
+    )
+  }
 
   return (
     <RNView loading={isLoading} fill>
       <SafeAreaView style={[styles.container, !isLoading && { backgroundColor: color || COLORS.bgPage }]}>
-        {hasInput ?
-          <KeyboardAvoidingView behavior="padding" style={styles.container}>
-            <RNPressable onPress={Keyboard.dismiss} fill>
-              {children}
-            </RNPressable>
-          </KeyboardAvoidingView>
-          : children}
+        {children}
       </SafeAreaView>
     </RNView>
   )
 }
 
 export default RNContainer
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  }
+})

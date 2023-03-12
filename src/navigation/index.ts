@@ -5,11 +5,11 @@ const pushScreen = ({ screen, navigation }: IPush) => {
 }
 
 const popScreen = ({ navigation }: IPopScreen) => {
-  navigation.popToTop()
+  navigation.goBack()
 }
 
 const popToRoot = ({ navigation }: IPopToRoot) => {
-  navigation.popToTop()
+  navigation.popToRoot()
 }
 
 export {

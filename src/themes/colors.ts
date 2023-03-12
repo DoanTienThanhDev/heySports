@@ -5,7 +5,8 @@ const COLORS = {
   bgPage: "#ffffff",
   bgLoading: "#808080",
   border: "#dcdcdc",
-  secondText: "#a9a9a9"
+  secondText: "#a9a9a9",
+  error: "#dc143c"
 }
 
 export default COLORS;

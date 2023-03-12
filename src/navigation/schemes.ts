@@ -1,10 +1,12 @@
-export interface IPush {
-  screen: string,
-  navigation: any
+import { NavigationProp } from "@react-navigation/native"
+
+export interface INavigation {
+  navigation: NavigationProp<ReactNavigation.RootParamList>
+}
+export interface IPush extends INavigation {
+  screen: string
 }
 
-export interface IPopScreen {
-  navigation: any
-}
+export interface IPopScreen extends INavigation { }
 
 export interface IPopToRoot extends IPopScreen { }

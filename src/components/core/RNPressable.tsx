@@ -7,7 +7,7 @@ interface IRNPressable {
   color?: string,
   isBorder?: boolean,
   colorBorder?: string,
-  borderRadius?: string,
+  borderRadius?: number,
   center?: boolean,
   mHoz?: number,
   mVer?: number,
@@ -19,6 +19,10 @@ interface IRNPressable {
   h?: number,
   fill?: boolean,
   pVer?: number,
+  pHoz?: number,
+  borderColor?: string,
+  hozCenter?: boolean,
+  isRow?: boolean,
   onPress?: () => void
 }
 
@@ -40,14 +44,19 @@ const RNPressable = ({
   mLeft,
   fill,
   pVer,
+  pHoz,
+  borderColor,
+  hozCenter,
+  isRow,
   onPress
 }: IRNPressable) => {
   return (
     <Pressable style={[
       style && style,
       center && styles.center,
+      isRow && styles.row,
       color && { backgroundColor: color },
-      isBorder && { borderWidth: 1, borderColor: colorBorder, borderRadius: borderRadius },
+      isBorder && { borderWidth: 1, borderColor: borderColor || colorBorder, borderRadius: borderRadius },
       mHoz && { marginHorizontal: mHoz },
       mVer && { marginVertical: mVer },
       mTop && { marginTop: mTop },
@@ -57,7 +66,9 @@ const RNPressable = ({
       w && { width: w },
       h && { height: h },
       fill && { flex: 1 },
-      pVer && { paddingVertical: pVer }
+      pVer && { paddingVertical: pVer },
+      pHoz && { paddingHorizontal: pHoz },
+      hozCenter && { alignItems: 'center' }
     ]}
       onPress={onPress}
     >
@@ -72,5 +83,8 @@ const styles = StyleSheet.create({
   center: {
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  row: {
+    flexDirection: 'row'
   }
 })

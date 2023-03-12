@@ -1,25 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { RNText, RNView, RNInput, RNButton } from 'components/core'
-import { ContainerPage } from 'components/common'
+import { ContainerPage, TouchInput } from 'components/common'
 import { SocialLogin } from 'components';
 
 import { FONTS, COLORS } from 'themes';
-
+import { CONSTANTS } from 'utils';
+import { IItemTouch } from 'screens/schemes';
 interface IRegister {
   navigation: any
 }
 
 const Register = ({ navigation }: IRegister) => {
+  const [gender, setGender] = useState<IItemTouch>()
 
-  const onBack = () => {
+  const onRegister = () => {
     navigation.goBack()
+  }
+
+  const onSelectedGender = (item: IItemTouch) => {
+    setGender(item)
   }
 
   const onLoginApple = () => { }
   const onLoginFacebook = () => { }
   const onLoginGoogle = () => { }
-
 
   return (
     <ContainerPage navigation={navigation} hasInput>
@@ -28,32 +33,32 @@ const Register = ({ navigation }: IRegister) => {
       </RNText>
       <RNView pHoz={24} mTop={FONTS.s24} fill>
         <RNInput
-          value={"Doan Tien Thanh"}
+          value={''}
           title={'Full name'}
-          placeholder={'Please enter your full name'}
+          placeholder={'Please enter full name'}
+          onChangeValue={() => { }}
         />
         <RNInput
           value={""}
           title={'Email'}
           placeholder={'Please enter your email'}
+          onChangeValue={() => { }}
         />
         <RNInput
           value={""}
-          title={'Email'}
-          placeholder={'Please enter your email'}
+          title={'Date of birth'}
+          placeholder={'Please enter date of birth'}
+          onChangeValue={() => { }}
         />
-        <RNInput
-          value={""}
-          title={'Email'}
-          placeholder={'Please enter your email'}
+        <TouchInput
+          value={gender?.name}
+          title={'Gender'}
+          placeholder={'Please select gender'}
+          onClickItem={onSelectedGender}
+          items={CONSTANTS.GENDERS}
         />
-        <RNInput
-          value={""}
-          title={'Email'}
-          placeholder={'Please enter your email'}
-        />
-        <RNButton title='Register' mTop={32} onPress={onBack} />
-        <RNView verContent='flex-end' fill>
+        <RNButton title='Register' mTop={32} onPress={onRegister} />
+        <RNView mTop={100}>
           <RNText textAlign='center' mBottom={10} fontWeight="400">Register with</RNText>
           <SocialLogin
             onLoginApple={onLoginApple}

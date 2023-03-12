@@ -1,21 +1,26 @@
-import { Alert, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet } from 'react-native'
 import React from 'react'
 
 import { RNView, RNText, RNIcon } from 'components/core';
+
+import { popScreen } from 'navigation';
+import { INavigation } from 'navigation/schemes';
+
 import { COLORS, FONTS } from 'themes';
 
-interface IHeader {
+
+interface IHeader extends INavigation {
   title?: string,
-  id: string,
   icon?: string,
   typeIcon?: string,
   onPressRight?: () => void
 }
 
-const Header = ({ id, icon, typeIcon, title, onPressRight }: IHeader) => {
+const Header = ({ navigation, icon, typeIcon, title, onPressRight }: IHeader) => {
   const onPressBack = () => {
-    Alert.alert(`${id}`)
+    popScreen({ navigation })
   }
+
   return (
     <RNView h={FONTS.s32} mTop={!title ? 24 : 0} pLeft={!title ? 16 : 0} isRow centerHoz style={[title && styles.container]}>
       <Pressable style={styles.btnBack} hitSlop={10} onPress={onPressBack}>

@@ -19,6 +19,10 @@ interface IRNInput {
   mRight?: number,
   mBottom?: number,
   lines?: number,
+  errorMessage?: string,
+  style?: any,
+  isLeftIcon?: boolean,
+  isRightIcon?: boolean,
   onChangeValue: (value: string) => void,
   onPressIcon?: () => void
 }
@@ -38,52 +42,71 @@ const RNInput = ({
   mLeft,
   mRight,
   lines,
+  errorMessage,
+  style,
+  isLeftIcon,
+  isRightIcon,
   onChangeValue,
   onPressIcon
 }: IRNInput) => {
   const [isHideValue, setHideValue] = useState<boolean>(isPassword || false);
   const [isFocus, setFocus] = useState<boolean>(false);
 
+  const onSetFocus = (state: boolean) => () => {
+    setFocus(state)
+  }
+
   return (
-    <RNView
-      borderRadius={FONTS.primaryRadius}
-      borderWidth={FONTS.borderWidth}
-      borderColor={value || isFocus ? COLORS.primary : COLORS.border}
-      h={h || FONTS.height}
-      w={w}
-      mTop={mTop || FONTS.s16}
-      mLeft={mLeft}
-      mRight={mRight}
-      mBottom={mBottom}
-      margin={margin}
-      pVer={FONTS.s4}
-      pHoz={FONTS.s6}
-      isRow
-      centerHoz
-    >
-      <RNView fill>
-        {!!value && !!title &&
-          <RNText size={14} color={COLORS.primaryText} fontWeight="600">{title}</RNText>}
-        <TextInput
-          value={value}
-          style={styles.container}
-          keyboardType={type}
-          secureTextEntry={isHideValue}
-          placeholder={placeholder}
-          onChangeText={onChangeValue}
-          onFocus={() => { setFocus(true) }}
-          onBlur={() => { setFocus(false) }}
-          autoCapitalize="none"
-          numberOfLines={lines}
-          placeholderTextColor={COLORS.secondText}
-        />
+    < >
+      <RNView
+        borderRadius={FONTS.primaryRadius}
+        borderWidth={FONTS.borderWidth}
+        borderColor={value || isFocus ? COLORS.primary : COLORS.border}
+        h={h || FONTS.height}
+        w={w}
+        mTop={mTop || FONTS.s16}
+        mLeft={mLeft}
+        mRight={mRight}
+        mBottom={mBottom}
+        margin={margin}
+        pVer={FONTS.s4}
+        pHoz={FONTS.s6}
+        isRow
+        centerHoz
+        style={style}
+      >
+        {
+          isLeftIcon && !!icon && <RNIcon name={icon} size={FONTS.s16} color={COLORS.secondText} />
+        }
+        <RNView fill mLeft={isLeftIcon ? FONTS.s6 : 0}>
+          {!!value && !!title &&
+            <RNText size={14} color={COLORS.primaryText} fontWeight="600">{title}</RNText>}
+          <TextInput
+            value={value}
+            style={styles.container}
+            keyboardType={type}
+            secureTextEntry={isHideValue}
+            placeholder={placeholder}
+            onChangeText={onChangeValue}
+            onFocus={onSetFocus(true)}
+            onBlur={onSetFocus(false)}
+            autoCapitalize="none"
+            numberOfLines={lines}
+            placeholderTextColor={COLORS.secondText}
+          />
+        </RNView>
+        {(isPassword || isRightIcon) &&
+          <Pressable style={styles.btnRight} onPress={() => { icon && onPressIcon ? onPressIcon() : setHideValue(!isHideValue) }}>
+            <RNIcon name={icon ? icon : isHideValue ? 'eye' : 'eye-slash'} size={18} />
+          </Pressable>
+        }
       </RNView>
-      {(isPassword || !!icon) &&
-        <Pressable style={styles.btnRight} onPress={() => { icon && onPressIcon ? onPressIcon() : setHideValue(!isHideValue) }}>
-          <RNIcon name={icon ? icon : isHideValue ? 'eye' : 'eye-slash'} size={18} />
-        </Pressable>
+      {
+        !!errorMessage && <RNText mTop={4} fontWeight='400' color={COLORS.error} size={FONTS.s13}>
+          {errorMessage}
+        </RNText>
       }
-    </RNView>
+    </>
   )
 }
 
@@ -94,6 +117,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: FONTS.s14,
     fontWeight: "400",
+    paddingVertical: 0,
   },
   btnRight: {
     paddingHorizontal: 5
