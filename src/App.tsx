@@ -2,16 +2,16 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Login, Register, ForgotPassword, Logout, Home } from 'screens';
+import { Login, Register, ForgotPassword, Logout } from 'screens';
+import BottomTabs from 'navigation/mainTabs';
 
 const Stack = createNativeStackNavigator();
 
 const SCREENS = {
-  Login,
   Register,
   ForgotPassword,
   Logout,
-  Home
+  Login
 }
 
 const renderListChild = () => {
@@ -25,9 +25,14 @@ const renderListChild = () => {
 const AppStackScreen = () => {
   return (
     <Stack.Navigator
-      initialRouteName={'Main'}
+      initialRouteName={'Login'}
       screenOptions={{ headerShown: false }}
     >
+      <Stack.Screen
+        name='Main'
+        component={BottomTabs}
+        options={{ headerShown: false }}
+      />
       {renderListChild()}
     </Stack.Navigator>
   );
@@ -40,4 +45,5 @@ const App = () => {
     </NavigationContainer>
   );
 };
+
 export default App

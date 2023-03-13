@@ -10,6 +10,7 @@ const FONTS = {
   s32: 32,
   s16: 16,
   s18: 18,
+  s20: 20,
   s24: 24,
   height: 54,
   borderWidth: 1,

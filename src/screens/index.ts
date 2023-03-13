@@ -4,11 +4,21 @@ import ForgotPassword from 'screens/auth/forgot';
 import Logout from 'screens/auth/logout';
 
 import Home from 'screens/home';
+import Settings from 'screens/tabs/settings';
+import Pitch from 'screens/tabs/pitch';
+import Booking from 'screens/tabs/booking';
+import Profile from 'screens/tabs/settings/profile';
+import Conversations from 'screens/tabs/Chat';
 
 export {
   Login,
   Register,
   ForgotPassword,
   Logout,
-  Home
+  Home,
+  Settings,
+  Pitch,
+  Booking,
+  Profile,
+  Conversations
 }

@@ -10,7 +10,7 @@ interface IRNButton {
   fill?: boolean,
   bgColor?: string,
   txtColor?: string,
-  loading?: boolean,
+  isLoading?: boolean,
   loadingColor?: string,
   disable?: boolean,
   w?: number,
@@ -32,7 +32,7 @@ const RNButton = ({
   fill,
   bgColor,
   txtColor,
-  loading,
+  isLoading,
   loadingColor,
   disable,
   w,
@@ -65,11 +65,11 @@ const RNButton = ({
       mHoz && { marginHorizontal: mHoz },
       { ...more }
     ]}
-      disabled={disable || loading}
+      disabled={disable || isLoading}
       onPress={onPress}
     >
       {
-        loading ?
+        isLoading ?
           <ActivityIndicator size={'small'} color={loadingColor || COLORS.bgPage} /> :
           icon ?
             <RNIcon name={icon} size={FONTS.s24} /> :

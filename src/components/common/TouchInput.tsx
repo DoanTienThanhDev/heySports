@@ -3,7 +3,6 @@ import React, { useCallback, useState } from 'react'
 
 import { RNIcon, RNText, RNView, RNPressable, RNInput, RNButton } from 'components/core'
 
-import { IItemTouch } from 'screens/schemes'
 import { COLORS, FONTS, SCREENS } from 'themes'
 
 interface ITouchInput {

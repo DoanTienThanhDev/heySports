@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { RNText, RNView, RNInput, RNButton } from 'components/core'
-import { ContainerPage, TouchInput } from 'components/common'
+import { ContainerPage, TouchInput, DateTimeInput } from 'components/common'
 import { SocialLogin } from 'components';
 
 import { FONTS, COLORS } from 'themes';
@@ -13,6 +13,7 @@ interface IRegister {
 
 const Register = ({ navigation }: IRegister) => {
   const [gender, setGender] = useState<IItemTouch>()
+  const [date, setDate] = useState(new Date())
 
   const onRegister = () => {
     navigation.goBack()
@@ -27,7 +28,7 @@ const Register = ({ navigation }: IRegister) => {
   const onLoginGoogle = () => { }
 
   return (
-    <ContainerPage navigation={navigation} hasInput>
+    <ContainerPage navigation={navigation} hasInput >
       <RNText fontWeight="bold" textAlign='center' size={FONTS.s32} color={COLORS.primary}>
         Register
       </RNText>
@@ -44,11 +45,11 @@ const Register = ({ navigation }: IRegister) => {
           placeholder={'Please enter your email'}
           onChangeValue={() => { }}
         />
-        <RNInput
-          value={""}
+        <DateTimeInput
+          date={date}
           title={'Date of birth'}
-          placeholder={'Please enter date of birth'}
-          onChangeValue={() => { }}
+          placeholder={'Please select date of birth'}
+          onSelectDateTime={() => { }}
         />
         <TouchInput
           value={gender?.name}

@@ -23,7 +23,8 @@ interface IRNInput {
   style?: any,
   isLeftIcon?: boolean,
   isRightIcon?: boolean,
-  onChangeValue: (value: string) => void,
+  isTouch?: boolean,
+  onChangeText: (value: string) => void,
   onPressIcon?: () => void
 }
 
@@ -46,7 +47,8 @@ const RNInput = ({
   style,
   isLeftIcon,
   isRightIcon,
-  onChangeValue,
+  isTouch,
+  onChangeText,
   onPressIcon
 }: IRNInput) => {
   const [isHideValue, setHideValue] = useState<boolean>(isPassword || false);
@@ -87,7 +89,7 @@ const RNInput = ({
             keyboardType={type}
             secureTextEntry={isHideValue}
             placeholder={placeholder}
-            onChangeText={onChangeValue}
+            onChangeText={onChangeText}
             onFocus={onSetFocus(true)}
             onBlur={onSetFocus(false)}
             autoCapitalize="none"
@@ -102,7 +104,7 @@ const RNInput = ({
         }
       </RNView>
       {
-        !!errorMessage && <RNText mTop={4} fontWeight='400' color={COLORS.error} size={FONTS.s13}>
+        !!errorMessage && isTouch && <RNText mTop={4} fontWeight='400' color={COLORS.error} size={FONTS.s13}>
           {errorMessage}
         </RNText>
       }

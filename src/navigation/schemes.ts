@@ -10,3 +10,10 @@ export interface IPush extends INavigation {
 export interface IPopScreen extends INavigation { }
 
 export interface IPopToRoot extends IPopScreen { }
+
+export interface ITabIcon {
+  color: string,
+  size: number,
+  icon: string,
+  iconType?: string
+}

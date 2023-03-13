@@ -1,0 +1,23 @@
+{
+  "APP": {
+    "subTitle": "You are finding, we are finding"
+  },
+  "COMMON": {
+    "success": "Success"
+  },
+  "AUTH": {
+    "login": "Login",
+    "email": "Email",
+    "emailHint": "Please enter your email",
+    "emailRequired": "Email is required field",
+    "emailInvalid": "This email is invalid",
+    "password": "Password",
+    "passwordHint": "Please enter your password",
+    "passwordRequired": "Password is required field",
+    "passwordMin": "Password min is 8 characters",
+    "passwordMax": "Password max is 32 characters",
+    "forgotPassword": "Forgot password",
+    "register": "Register",
+    "orLoginWith": "or login with"
+  }
+}

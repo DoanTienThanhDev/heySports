@@ -12,7 +12,6 @@ interface IRNContainer {
 }
 
 const RNContainer = ({ children, color, isLoading, hasInput }: IRNContainer) => {
-
   if (hasInput) {
     return (
       <KeyboardAwareScrollView

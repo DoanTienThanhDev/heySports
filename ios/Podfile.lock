@@ -419,6 +419,12 @@ PODS:
     - React-jsi (= 0.71.3)
     - React-logger (= 0.71.3)
     - React-perflogger (= 0.71.3)
+  - ReactNativeLocalization (2.3.1):
+    - React-Core
+  - RNDateTimePicker (6.7.5):
+    - React-Core
+  - RNLocalize (2.2.6):
+    - React-Core
   - RNScreens (3.20.0):
     - React-Core
     - React-RCTImage
@@ -489,6 +495,9 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - ReactNativeLocalization (from `../node_modules/react-native-localization`)
+  - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
+  - RNLocalize (from `../node_modules/react-native-localize`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -580,6 +589,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  ReactNativeLocalization:
+    :path: "../node_modules/react-native-localization"
+  RNDateTimePicker:
+    :path: "../node_modules/@react-native-community/datetimepicker"
+  RNLocalize:
+    :path: "../node_modules/react-native-localize"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNVectorIcons:
@@ -635,6 +650,9 @@ SPEC CHECKSUMS:
   React-RCTVibration: 5199a180d04873366a83855de55ac33ce60fe4d5
   React-runtimeexecutor: 7bf0dafc7b727d93c8cb94eb00a9d3753c446c3e
   ReactCommon: 6f65ea5b7d84deb9e386f670dd11ce499ded7b40
+  ReactNativeLocalization: 076497d7ca70341c751cd3b3e7c86187332a182d
+  RNDateTimePicker: 65e1d202799460b286ff5e741d8baf54695e8abd
+  RNLocalize: d4b8af4e442d4bcca54e68fc687a2129b4d71a81
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
