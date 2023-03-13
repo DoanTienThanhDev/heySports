@@ -4,7 +4,10 @@ const COLORS = {
   primaryText: "#000000",
   bgPage: "#ffffff",
   bgLoading: "#808080",
-  border: "#dcdcdc"
+  border: "#dcdcdc",
+  secondText: "#a9a9a9",
+  error: "#dc143c",
+  gray: "#696969"
 }
 
 export default COLORS;

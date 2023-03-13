@@ -1,7 +1,7 @@
-import { StyleSheet, View, ActivityIndicator } from 'react-native'
+import { StyleSheet, View, ActivityIndicator, FlexStyle } from 'react-native'
 import React from 'react'
 
-import { COLORS, SCREENS } from 'values'
+import { COLORS, SCREENS } from 'themes'
 interface IRNView {
   children?: React.ReactNode,
   fill?: boolean,
@@ -31,7 +31,11 @@ interface IRNView {
   borderRadius?: number,
   borderColor?: string,
   borderWidth?: number,
-  isRow?: boolean
+  isRow?: boolean,
+  style?: any,
+  flex?: number,
+  hozContent?: FlexStyle['alignItems'],
+  verContent?: FlexStyle['justifyContent']
 }
 
 const RNView = ({
@@ -64,11 +68,16 @@ const RNView = ({
   borderColor,
   borderWidth,
   isRow,
+  style,
+  flex,
+  verContent,
+  hozContent,
   ...more
 }: IRNView) => {
   return (
     <>
       <View style={[
+        style && style,
         isPage && styles.container,
         fill && styles.fill,
         center && styles.center,
@@ -92,7 +101,10 @@ const RNView = ({
         !!pVer && { paddingVertical: pVer },
         !!mHoz && { marginHorizontal: pHoz },
         !!mVer && { marginVertical: pVer },
-        !!borderRadius && { borderRadius: borderRadius, borderColor: borderColor || COLORS.border, borderWidth: borderWidth, },
+        !!borderRadius && { borderRadius: borderRadius, borderColor: borderColor || COLORS.border, borderWidth: borderWidth },
+        flex && { flex: flex },
+        hozContent && { alignContent: verContent },
+        verContent && { justifyContent: hozContent },
         loading && { backgroundColor: bgLoading || COLORS.bgLoading, opacity: 0.8 },
         { ...more }
       ]

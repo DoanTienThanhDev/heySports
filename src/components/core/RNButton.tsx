@@ -1,9 +1,8 @@
 import { StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native'
 import React from 'react'
 
-import RNText from './RNText'
-
-import { COLORS, FONTS } from '../../values'
+import { RNText, RNIcon } from 'components/core';
+import { COLORS, FONTS } from 'themes'
 
 interface IRNButton {
   title: string,
@@ -11,7 +10,7 @@ interface IRNButton {
   fill?: boolean,
   bgColor?: string,
   txtColor?: string,
-  loading?: boolean,
+  isLoading?: boolean,
   loadingColor?: string,
   disable?: boolean,
   w?: number,
@@ -23,6 +22,7 @@ interface IRNButton {
   mBottom?: number,
   pHoz?: number,
   icon?: string,
+  mHoz?: number,
   onPress: () => void
 }
 
@@ -32,7 +32,7 @@ const RNButton = ({
   fill,
   bgColor,
   txtColor,
-  loading,
+  isLoading,
   loadingColor,
   disable,
   w,
@@ -44,6 +44,7 @@ const RNButton = ({
   mRight,
   icon,
   pHoz,
+  mHoz,
   onPress,
   ...more
 }: IRNButton) => {
@@ -61,16 +62,17 @@ const RNButton = ({
       mLeft && { marginLeft: mLeft },
       mRight && { marginRight: mRight },
       pHoz && { paddingHorizontal: pHoz },
+      mHoz && { marginHorizontal: mHoz },
       { ...more }
     ]}
-      disabled={disable || loading}
+      disabled={disable || isLoading}
       onPress={onPress}
     >
       {
-        loading ?
+        isLoading ?
           <ActivityIndicator size={'small'} color={loadingColor || COLORS.bgPage} /> :
           icon ?
-            <RNText>{'s'}</RNText> :
+            <RNIcon name={icon} size={FONTS.s24} /> :
             <RNText fontWeight='bold' color={txtColor || COLORS.bgPage} size={FONTS.s16}>{title}</RNText>
       }
     </TouchableOpacity>
@@ -81,6 +83,7 @@ export default RNButton
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 16,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

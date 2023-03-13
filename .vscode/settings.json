@@ -15,7 +15,7 @@
     "configFile": "./.eslintrc.json"
   },
   "editor.tabSize": 2,
-  "cSpell.words": [ ],
+  "cSpell.words": ["chatbox", "datetime", "Ionicons", "Pressable"],
   "editor.wordWrapColumn": 100,
   "typescript.preferences.importModuleSpecifier": "relative",
   "javascript.preferences.importModuleSpecifier": "relative",
@@ -27,5 +27,6 @@
   },
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
-  }
+  },
+  "java.compile.nullAnalysis.mode": "automatic"
 }
