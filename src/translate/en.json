@@ -1,0 +1,46 @@
+{
+  "APP": {
+    "subTitle": "You are finding, we are finding",
+    "nextStep": "Next step",
+    "subTitleFirstIntro": "Unleash with passion",
+    "subTitleSecondIntro": "",
+    "subTitleFinalIntro": "",
+    "descFirstIntro": "We connect people with the same passion",
+    "descSecondIntro":"",
+    "descFinalIntro":""
+
+  },
+  "COMMON": {
+    "success": "Success",
+    "search": "Search"
+  },
+  "AUTH": {
+    "login": "Login",
+    "email": "Email",
+    "emailHint": "Please enter your email",
+    "emailRequired": "Email is required field",
+    "emailInvalid": "This email is invalid",
+    "password": "Password",
+    "passwordHint": "Please enter your password",
+    "passwordRequired": "Password is required field",
+    "passwordMin": "Password min is 8 characters",
+    "passwordMax": "Password max is 32 characters",
+    "forgotPassword": "Forgot password",
+    "register": "Register",
+    "orLoginWith": "or login with",
+    "fullName": "Full name",
+    "fullNameHint": "Please enter full name",
+    "fullNameRequired": "Full name is required field",
+    "fullNameMax": "Full name is limited 50 characters ",
+    "dateOfBirth": "Date of birth",
+    "dateOfBirthRequired": "Date of birth is required field",
+    "dateOfBirthHint": "Please select date of birth ",
+    "gender": "Gender",
+    "genderHint": "Please select gender",
+    "genderRequired": "Gender is required field",
+    "confirmPassword": "Confirm password",
+    "confirmPasswordHint": "Please enter confirm password",
+    "confirmPasswordNotMatch": "Password not matches",
+    "registerWith": "Register with"
+  }
+}

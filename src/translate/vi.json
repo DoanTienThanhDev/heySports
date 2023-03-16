@@ -1,0 +1,23 @@
+{
+  "APP": {
+    "subTitle": "Bạn đang tìm kiếm, Chúng tôi đang tìm kiếm"
+  },
+  "COMMON": {
+    "success": "Success"
+  },
+  "AUTH": {
+    "login": "Login",
+    "email": "Email",
+    "emailHint": "Nhập email của bạn",
+    "emailRequired": "Email là trường bắt buộc",
+    "emailInvalid": "This email is invalid",
+    "password": "Password",
+    "passwordHint": "Please enter your password",
+    "passwordRequired": "Password is required field",
+    "passwordMin": "Password min is 8 characters",
+    "passwordMax": "Password max is 32 characters",
+    "forgotPassword": "Forgot password",
+    "register": "Register",
+    "orLoginWith": "or login with"
+  }
+}
