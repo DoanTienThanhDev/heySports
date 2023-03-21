@@ -4,7 +4,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import BottomTabs from 'navigation/mainTabs';
 
-import { Welcome, Login, Register, ForgotPassword, Logout, Password } from 'screens';
+import {
+  Welcome,
+  Login,
+  Register,
+  ForgotPassword,
+  Logout,
+  Password,
+  EnterCode
+} from 'screens';
 
 import { useGetLocalStore } from './hooks'
 import { CONSTANTS, SCREENS_NAME } from 'utils';
@@ -17,7 +25,8 @@ const SCREENS = {
   ForgotPassword,
   Logout,
   Login,
-  Password
+  Password,
+  EnterCode
 }
 
 const renderListChild = () => {

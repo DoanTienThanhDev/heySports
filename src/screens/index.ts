@@ -4,6 +4,7 @@ import Register from 'screens/auth/register';
 import ForgotPassword from 'screens/auth/forgot';
 import Logout from 'screens/auth/logout';
 import Password from 'screens/auth/password';
+import EnterCode from 'screens/auth/forgot/EnterCode'
 
 import Home from 'screens/home';
 import Settings from 'screens/tabs/settings';
@@ -24,5 +25,6 @@ export {
   Pitch,
   Booking,
   Profile,
-  Chat
+  Chat,
+  EnterCode
 }

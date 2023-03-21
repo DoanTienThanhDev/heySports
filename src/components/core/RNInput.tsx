@@ -86,7 +86,7 @@ const RNInput = ({
           {!!value && !!title &&
             <RNText size={14} fontWeight={EFontWeight.medium}>{`${title}`}</RNText>}
           <TextInput
-            value={`${value}`}
+            value={`${value || ''}`}
             style={styles.container}
             keyboardType={type}
             secureTextEntry={isHideValue}

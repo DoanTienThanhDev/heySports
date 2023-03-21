@@ -64,7 +64,7 @@ const Password = ({ navigation, isChangePassword, route }: IPassword) => {
   }
 
   return (
-    <AuthTemplate navigation={navigation} image={IMAGES.imgSecondIntro} title={translate('AUTH.password')}>
+    <AuthTemplate navigation={navigation} image={IMAGES.imgSecondIntro} title={route?.params?.title || translate('AUTH.password')}>
       {
         isChangePassword && <RNInput
           title={translate('AUTH.currentPassword')}

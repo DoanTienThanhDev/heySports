@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { RNButton, RNContainer, RNImage, RNText, RNView } from 'components/core'
 import { ContainerPage } from 'components/common'
 
-import { COLORS, IMAGES } from 'themes'
+import { IMAGES, EColors } from 'themes'
 import { IPage } from 'screens/schemes'
 import { useGetLocalStore, useRemoveLocalStore } from 'hooks'
 import { CONSTANTS } from 'utils';
@@ -37,9 +37,9 @@ const Settings = ({ navigation }: ISettings) => {
 
   }
   return (
-    <RNView fill color={COLORS.primary}>
+    <RNView fill color={EColors.primary}>
       <RNView fill />
-      <RNView flex={8} color={COLORS.bgPage} borderTop={50}>
+      <RNView flex={8} color={EColors.bgPage} borderTop={50}>
         <RNButton title={'Logout'} onPress={onLogout} isLoading={loading} />
       </RNView>
     </RNView >

@@ -8,7 +8,8 @@ const enum EColors {
   secondText = "#708090",
   error = "#dc143c",
   gray = "#696969",
-  black = "#000000"
+  black = "#000000",
+  bgDisable = "#848482"
 }
 
 export default EColors;

@@ -57,6 +57,10 @@
     "currentPassword": "Current Password",
     "currentPasswordHint": "Please enter current password",
     "currentPasswordRequired": "Current password is required field",
-    "enterEmail": "Enter Email"
+    "forgotPasswordTitle": "Forgot\nPassword?",
+    "enterCode": "Enter OTP",
+    "msgEnterCode": "Enter the code HeySports sent to the email: ",
+    "confirmPasswordRequired": "Confirm password is required field",
+    "resetPassword": "Reset\nPassword"
   }
 }
