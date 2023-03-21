@@ -3,10 +3,8 @@ interface IUserLogin {
   password: string
 }
 
-interface IUserRegister extends IUserLogin {
+interface IUserInfo extends IUserLogin {
   fullName: string,
-  dateOfBirth: string,
   gender: string,
-  password: string,
-  confirmPassword: string
+  dateOfBirth?: string,
 }

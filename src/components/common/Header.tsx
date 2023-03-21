@@ -5,18 +5,19 @@ import { RNView, RNText, RNIcon } from 'components/core';
 
 import { popScreen } from 'navigation';
 import { INavigation } from 'navigation/schemes';
-import { COLORS, FONTS } from 'themes';
+import { EFontSize, EFontWeight, ESPacing, ETextAlign, EColors } from 'themes';
+import { EIcons, EIconTypes } from 'utils';
 
 interface IHeader extends INavigation {
   title?: string,
-  icon?: string,
-  typeIcon?: string,
+  icon?: EIcons,
+  typeIcon?: EIconTypes,
   isBackIcon?: boolean,
   onPressRight?: () => void,
   onPressBack?: () => void
 }
 
-const Header = ({ navigation, icon, typeIcon, title, isBackIcon = true, onPressRight, onPressBack }: IHeader) => {
+const Header = ({ navigation, icon, typeIcon, title, isBackIcon, onPressRight, onPressBack }: IHeader) => {
   const onPress = () => {
     if (isBackIcon) {
       onPressBack ? onPressBack() : popScreen({ navigation })
@@ -25,20 +26,20 @@ const Header = ({ navigation, icon, typeIcon, title, isBackIcon = true, onPressR
 
   return (
     <RNView
-      h={Platform.OS === "ios" ? FONTS.s32 : FONTS.height}
-      mTop={!title ? 24 : 0}
-      pLeft={!title ? 16 : 0}
+      h={Platform.OS === "ios" ? ESPacing.space_32 : ESPacing.space_54}
+      mTop={!title ? ESPacing.space_24 : ESPacing.space_0}
+      pLeft={!title ? ESPacing.space_16 : ESPacing.space_0}
       isRow
       centerHoz
       style={[title && styles.container]}>
-      <Pressable style={styles.btnBack} hitSlop={10} onPress={onPress}>
-        {isBackIcon && <RNIcon name="chevron-back" type='Ionicons' size={FONTS.s24} />}
+      <Pressable style={styles.btnBack} hitSlop={ESPacing.space_10} onPress={onPress}>
+        {isBackIcon && <RNIcon name={EIcons.ic_back} type={EIconTypes.ionIcon} size={EFontSize.size_24} />}
       </Pressable>
       {!!title &&
-        <RNText fill textAlign='center' fontWeight='600' lines={1} size={Platform.OS === "ios" ? FONTS.s20 : FONTS.s18}>
+        <RNText fill textAlign={ETextAlign.center} fontWeight={EFontWeight.medium} lines={ESPacing.space_1} size={Platform.OS === "ios" ? EFontSize.size_20 : EFontSize.size_18}>
           {title}
         </RNText>}
-      <Pressable style={styles.btnBack} hitSlop={10} onPress={onPressRight}>
+      <Pressable style={styles.btnBack} hitSlop={ESPacing.space_10} onPress={onPressRight}>
         {!!icon && <RNIcon name={icon} type={typeIcon} />}
       </Pressable>
     </RNView>
@@ -49,12 +50,12 @@ export default Header
 
 const styles = StyleSheet.create({
   container: {
-    borderBottomWidth: 1,
-    borderBottomColor: COLORS.border
+    borderBottomWidth: ESPacing.space_border,
+    borderBottomColor: EColors.border
   },
   btnBack: {
-    height: 30,
-    width: 40,
+    height: ESPacing.space_32,
+    width: ESPacing.space_40,
     justifyContent: 'center',
     alignItems: 'center'
   }

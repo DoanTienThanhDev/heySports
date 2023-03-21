@@ -3,8 +3,9 @@ import React, { useCallback, useState } from 'react'
 
 import { RNIcon, RNText, RNView, RNPressable, RNInput, RNButton } from 'components/core'
 
-import { COLORS, FONTS, SCREENS } from 'themes'
+import { SCREEN_SIZE, EColors, EFontSize, EFontWeight, ETextAlign, ESPacing } from 'themes'
 import { translate } from 'translate';
+import { EIcons } from 'utils';
 interface ITouchInput {
   isSearch?: boolean,
   title: string,
@@ -66,13 +67,13 @@ const TouchInput = ({
       h={40}
       center
       onPress={onPressItem(item)}
-      color={COLORS.border}
+      color={EColors.border}
       pHoz={10}
       borderRadius={6}
       isBorder
-      borderColor={COLORS.primary}
+      borderColor={EColors.primary}
     >
-      <RNText fontWeight='600'>
+      <RNText fontWeight={EFontWeight.medium}>
         {item.name}
       </RNText>
     </RNPressable>
@@ -81,32 +82,32 @@ const TouchInput = ({
   return (
     < >
       <RNPressable
-        borderRadius={FONTS.primaryRadius}
+        borderRadius={ESPacing.space_radius}
         isBorder
-        h={h || FONTS.height}
+        h={h || ESPacing.space_height}
         w={w}
-        mTop={mTop || FONTS.s16}
+        mTop={mTop || ESPacing.space_16}
         mLeft={mLeft}
         mRight={mRight}
         mBottom={mBottom}
-        pVer={FONTS.s4}
-        pHoz={FONTS.s6}
+        pVer={ESPacing.space_4}
+        pHoz={ESPacing.space_6}
         isRow
-        borderColor={value ? COLORS.primary : COLORS.border}
+        borderColor={value ? EColors.primary : EColors.border}
         onPress={onVisible(true)}
         hozCenter
       >
         <RNView fill>
           {!!value && !!title &&
-            <RNText size={14} color={COLORS.primaryText} fontWeight="600">{title}</RNText>
+            <RNText size={14} color={EColors.primaryText} fontWeight={EFontWeight.medium}>{title}</RNText>
           }
-          <RNText color={value ? COLORS.primaryText : COLORS.secondText}>{value || placeholder}</RNText>
+          <RNText color={value ? EColors.primaryText : EColors.secondText}>{value || placeholder}</RNText>
         </RNView>
-        <RNIcon name={'angle-down'} size={20} />
+        <RNIcon name={EIcons.angle_down} size={20} />
         <RNView w={5} />
       </RNPressable>
       {
-        !!errorMessage && isTouch && <RNText mTop={4} fontWeight='400' color={COLORS.error} size={FONTS.s13}>
+        !!errorMessage && isTouch && <RNText mTop={4} fontWeight={EFontWeight.normal} color={EColors.error} size={EFontSize.size_13}>
           {`${errorMessage}`}
         </RNText>
       }
@@ -116,13 +117,13 @@ const TouchInput = ({
         statusBarTranslucent={true}
         hardwareAccelerated={false}
       >
-        <RNView fill color={COLORS.bgLoading} style={styles.modelContent}>
-          <RNView color={COLORS.bgPage} style={styles.showData} pHoz={24} pTop={FONTS.s16} pBottom={FONTS.s32}>
-            <RNText size={FONTS.s16} fontWeight="bold" textAlign='center'>{title}</RNText>
+        <RNView fill color={EColors.bgLoading} style={styles.modelContent}>
+          <RNView color={EColors.bgPage} style={styles.showData} pHoz={24} pTop={ESPacing.space_16} pBottom={ESPacing.space_32}>
+            <RNText size={EFontSize.size_16} fontWeight={EFontWeight.bold} textAlign={ETextAlign.center}>{title}</RNText>
             {isSearch &&
               <RNInput title=''
                 placeholder={translate('COMMON.search')}
-                h={40} isLeftIcon icon='search' value={search} onChangeText={onChangeTextSearch} />}
+                h={40} isLeftIcon icon={EIcons.search} value={search} onChangeText={onChangeTextSearch} />}
             <FlatList
               showsVerticalScrollIndicator={false}
               style={styles.flatList}
@@ -131,7 +132,7 @@ const TouchInput = ({
               keyExtractor={(item: IItemTouch, index: number) => `index${index} ${item.id}`}
               ItemSeparatorComponent={() => <RNView h={10} />}
             />
-            <RNButton title="Cancel" onPress={onVisible(false)} />
+            <RNButton title={translate('COMMON.cancel')} onPress={onVisible(false)} />
           </RNView>
         </RNView>
       </Modal>
@@ -143,25 +144,25 @@ export default TouchInput
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    fontSize: FONTS.s14,
-    fontWeight: "400",
+    flex: ESPacing.space_1,
+    fontSize: EFontSize.primary,
+    fontWeight: EFontWeight.normal,
   },
   btnRight: {
-    paddingHorizontal: 5
+    paddingHorizontal: ESPacing.space_5
   },
   model: {
-    height: SCREENS.height / 2
+    height: SCREEN_SIZE.height / ESPacing.space_2
   },
   modelContent: {
     justifyContent: 'flex-end'
   },
   showData: {
-    borderTopLeftRadius: FONTS.s32,
-    borderTopRightRadius: FONTS.s32,
-    maxHeight: SCREENS.height - 100
+    borderTopLeftRadius: ESPacing.space_32,
+    borderTopRightRadius: ESPacing.space_32,
+    maxHeight: SCREEN_SIZE.height - ESPacing.space_100
   },
   flatList: {
-    marginTop: 10
+    marginTop: ESPacing.space_10
   }
 })

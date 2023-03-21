@@ -1,51 +1,54 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Home, Settings, Pitch, Booking, Conversations } from 'screens';
+import { Home, Settings, Pitch, Booking, Chat } from 'screens';
 import { RNIcon, RNText } from 'components/core';
 
-import { COLORS, FONTS } from 'themes';
+import { EIcons, EIconTypes, SCREENS_NAME } from 'utils';
+import { EColors, EFontWeight } from 'themes';
 import { ITabIcon } from 'navigation/schemes';
 
 const MainTabs = () => {
   const Tab = createBottomTabNavigator();
 
-  const TabIcon = ({ color, size, icon, iconType }: ITabIcon) => <RNIcon name={icon} color={color} size={size} type={iconType || "Ionicons"} />
+  const TabIcon = ({ color, size, icon, iconType }: ITabIcon) => <RNIcon name={icon} color={color} size={size} type={iconType || EIconTypes.ionIcon} />
+
+  const getFontWeight = (focused: boolean) => focused ? EFontWeight.bold : EFontWeight.normal
 
   return (
-    <Tab.Navigator initialRouteName='Home' screenOptions={{
-      tabBarActiveTintColor: COLORS.primary,
-      tabBarInactiveTintColor: COLORS.secondText,
+    <Tab.Navigator initialRouteName={SCREENS_NAME.home} screenOptions={{
+      tabBarActiveTintColor: EColors.primary,
+      tabBarInactiveTintColor: EColors.secondText,
       headerShown: false,
     }}
     >
-      <Tab.Screen name="Home" component={Home}
+      <Tab.Screen name={SCREENS_NAME.home} component={Home}
         options={{
-          headerTintColor: COLORS.primary,
-          tabBarIcon: ({ color, size, focused }) => <TabIcon color={color} size={size} icon={focused ? "home" : "home-outline"} />,
-          tabBarLabel: ({ focused, children, color }) => <RNText color={color} size={FONTS.s14} fontWeight={focused ? "bold" : "400"}>{children}</RNText>
+          headerTintColor: EColors.primary,
+          tabBarIcon: ({ color, size, focused }) => <TabIcon color={color} size={size} icon={focused ? EIcons.home : EIcons.home_outline} />,
+          tabBarLabel: ({ focused, children, color }) => <RNText color={color} fontWeight={getFontWeight(focused)}>{children}</RNText>
         }} />
-      <Tab.Screen name="Pitch" component={Pitch}
+      <Tab.Screen name={SCREENS_NAME.pitch} component={Pitch}
         options={{
-          tabBarIcon: ({ color, size, focused }) => <TabIcon color={color} size={size} icon={focused ? "md-map-sharp" : "md-map-outline"} />,
-          tabBarLabel: ({ focused, children, color }) => <RNText color={color} size={FONTS.s14} fontWeight={focused ? "bold" : "400"}>{children}</RNText>
+          tabBarIcon: ({ color, size, focused }) => <TabIcon color={color} size={size} icon={focused ? EIcons.map_box : EIcons.map_box_outline} />,
+          tabBarLabel: ({ focused, children, color }) => <RNText color={color} fontWeight={getFontWeight(focused)}>{children}</RNText>
 
         }} />
-      <Tab.Screen name="Booking" component={Booking}
+      <Tab.Screen name={SCREENS_NAME.booking} component={Booking}
         options={{
-          tabBarIcon: ({ color, size }) => <TabIcon color={color} size={size} icon="soccer-field" iconType='MaterialCommunityIcons' />,
-          tabBarLabel: ({ focused, children, color }) => <RNText color={color} size={FONTS.s14} fontWeight={focused ? "bold" : "400"}>{children}</RNText>
+          tabBarIcon: ({ color, size }) => <TabIcon color={color} size={size} icon={EIcons.soccer_field} iconType={EIconTypes.materialCommunityIcons} />,
+          tabBarLabel: ({ focused, children, color }) => <RNText color={color} fontWeight={getFontWeight(focused)}>{children}</RNText>
         }} />
-      <Tab.Screen name="Conversations" component={Conversations}
+      <Tab.Screen name={SCREENS_NAME.chat} component={Chat}
         options={{
-          tabBarIcon: ({ color, size, focused }) => <TabIcon color={color} size={size} icon={focused ? "chatbox" : "chatbox-outline"} />,
-          tabBarLabel: ({ focused, color }) => <RNText color={color} size={FONTS.s14} fontWeight={focused ? "bold" : "400"}>{"Chat"}</RNText>
+          tabBarIcon: ({ color, size, focused }) => <TabIcon color={color} size={size} icon={focused ? EIcons.chat_box : EIcons.chat_box_outline} />,
+          tabBarLabel: ({ focused, color, children }) => <RNText color={color} fontWeight={getFontWeight(focused)}>{children}</RNText>
         }} />
-      <Tab.Screen name='Settings' component={Settings}
+      <Tab.Screen name={SCREENS_NAME.settings} component={Settings}
         options={{
-          headerTintColor: COLORS.primary,
-          tabBarIcon: ({ color, size, focused }) => <TabIcon color={color} size={size} icon={focused ? "settings" : "settings-outline"} />,
-          tabBarLabel: ({ focused, children, color }) => <RNText color={color} size={FONTS.s14} fontWeight={focused ? "bold" : "400"}>{children}</RNText>
+          headerTintColor: EColors.primary,
+          tabBarIcon: ({ color, size, focused }) => <TabIcon color={color} size={size} icon={focused ? EIcons.settings : EIcons.settings_outline} />,
+          tabBarLabel: ({ focused, children, color }) => <RNText color={color} fontWeight={getFontWeight(focused)}>{children}</RNText>
         }} />
     </Tab.Navigator>
   );

@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { ContainerPage } from 'components/common';
 import { RNButton, RNImage, RNInput, RNText, RNView, RNContainer } from 'components/core';
 
-import { COLORS, SCREENS } from 'themes';
+import { COLORS } from 'themes';
 import { IPage } from 'screens/schemes';
 
 

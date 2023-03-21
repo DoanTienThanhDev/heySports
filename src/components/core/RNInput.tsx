@@ -2,30 +2,32 @@ import { KeyboardTypeOptions, Pressable, StyleSheet, TextInput } from 'react-nat
 import React, { useState } from 'react'
 
 import { RNIcon, RNText, RNView } from './index'
-import { COLORS, FONTS } from 'themes'
+
+import { EColors, EFontSize, EFontWeight, ESPacing } from 'themes'
+import { EIcons } from 'utils';
 
 interface IRNInput {
   title: string,
   value?: string,
-  type?: KeyboardTypeOptions,
-  isPassword?: boolean,
-  icon?: string,
-  placeholder?: string,
-  w?: number,
-  h?: number,
-  margin?: number,
-  mTop?: number,
-  mLeft?: number,
-  mRight?: number,
-  mBottom?: number,
-  lines?: number,
   errorMessage?: string,
-  style?: any,
+  icon?: EIcons,
+  placeholder?: string,
+  w?: ESPacing,
+  h?: ESPacing,
+  margin?: ESPacing,
+  mTop?: ESPacing,
+  mLeft?: ESPacing,
+  mRight?: ESPacing,
+  mBottom?: ESPacing,
+  lines?: ESPacing,
   isLeftIcon?: boolean,
   isRightIcon?: boolean,
   isTouch?: boolean,
+  isPassword?: boolean,
+  type?: KeyboardTypeOptions,
   onChangeText: (value: string) => void,
-  onPressIcon?: () => void
+  onPressIcon?: () => void,
+  style?: any
 }
 
 const RNInput = ({
@@ -61,28 +63,28 @@ const RNInput = ({
   return (
     < >
       <RNView
-        borderRadius={FONTS.primaryRadius}
-        borderWidth={FONTS.borderWidth}
-        borderColor={value || isFocus ? COLORS.primary : COLORS.border}
-        h={h || FONTS.height}
+        borderRadius={ESPacing.space_6}
+        borderWidth={ESPacing.space_border}
+        borderColor={value || isFocus ? EColors.primary : EColors.border}
+        h={h || ESPacing.space_height}
         w={w}
-        mTop={mTop || FONTS.s16}
+        mTop={mTop || ESPacing.space_16}
         mLeft={mLeft}
         mRight={mRight}
         mBottom={mBottom}
         margin={margin}
-        pVer={FONTS.s4}
-        pHoz={FONTS.s6}
+        pVer={ESPacing.space_4}
+        pHoz={ESPacing.space_6}
         isRow
         centerHoz
         style={style}
       >
         {
-          isLeftIcon && !!icon && <RNIcon name={icon} size={FONTS.s16} color={COLORS.secondText} />
+          isLeftIcon && !!icon && <RNIcon name={icon} size={EFontSize.size_16} color={EColors.secondText} />
         }
-        <RNView fill mLeft={isLeftIcon ? FONTS.s6 : 0}>
+        <RNView fill mLeft={isLeftIcon ? ESPacing.space_6 : 0}>
           {!!value && !!title &&
-            <RNText size={14} color={COLORS.primaryText} fontWeight="600">{`${title}`}</RNText>}
+            <RNText size={14} fontWeight={EFontWeight.medium}>{`${title}`}</RNText>}
           <TextInput
             value={`${value}`}
             style={styles.container}
@@ -94,17 +96,17 @@ const RNInput = ({
             onBlur={onSetFocus(false)}
             autoCapitalize="none"
             numberOfLines={lines}
-            placeholderTextColor={COLORS.secondText}
+            placeholderTextColor={EColors.secondText}
           />
         </RNView>
         {(isPassword || isRightIcon) &&
           <Pressable style={styles.btnRight} onPress={() => { icon && onPressIcon ? onPressIcon() : setHideValue(!isHideValue) }}>
-            <RNIcon name={icon ? icon : isHideValue ? 'eye' : 'eye-slash'} size={18} />
+            <RNIcon name={icon ? icon : isHideValue ? EIcons.eye : EIcons.eyeSlash} size={EFontSize.size_18} />
           </Pressable>
         }
       </RNView>
       {
-        !!errorMessage && isTouch && <RNText mTop={4} fontWeight='400' color={COLORS.error} size={FONTS.s13}>
+        !!errorMessage && isTouch && <RNText mTop={ESPacing.space_4} fontWeight={EFontWeight.normal} color={EColors.error} size={EFontSize.size_13}>
           {errorMessage}
         </RNText>
       }
@@ -117,11 +119,12 @@ export default RNInput
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    fontSize: FONTS.s14,
-    fontWeight: "400",
+    fontSize: EFontSize.primary,
+    fontWeight: EFontWeight.normal,
     paddingVertical: 0,
+    color: EColors.primaryText
   },
   btnRight: {
-    paddingHorizontal: 5
+    paddingHorizontal: ESPacing.space_5
   }
 })

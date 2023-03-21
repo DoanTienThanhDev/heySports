@@ -3,11 +3,12 @@ import React, { useState } from 'react'
 import { RNButton, RNImage, RNText, RNView } from 'components/core';
 import { ContainerPage } from 'components/common';
 
-import { INavigation } from 'navigation/schemes';
-import { COLORS, IMAGES, SCREENS, FONTS } from 'themes';
 import { translate } from 'translate';
 import { pushToLogin } from 'navigation';
 import { useSetLocalStore } from 'hooks';
+import { INavigation } from 'navigation/schemes';
+
+import { IMAGES, SCREEN_SIZE, EFontWeight, EColors, EFontSize, ESPacing } from 'themes';
 import { CONSTANTS } from 'utils';
 
 interface IContentIntro {
@@ -15,7 +16,6 @@ interface IContentIntro {
   subTitle: string,
   desc: string
 }
-let size = FONTS.s10
 
 const Welcome = ({ navigation }: INavigation) => {
   const [steps, setSteps] = useState<number>(0)
@@ -23,9 +23,9 @@ const Welcome = ({ navigation }: INavigation) => {
   const ContentIntro = ({ src, subTitle, desc }: IContentIntro) => {
     return (
       <>
-        <RNImage src={src} h={SCREENS.width / 1.5} w={steps == 0 ? SCREENS.width : SCREENS.width - 100} />
-        <RNText mTop={8} size={FONTS.s18} fontWeight="600">{subTitle}</RNText>
-        <RNText mTop={16} size={FONTS.s14} color={COLORS.secondText}>{desc}</RNText>
+        <RNImage src={src} h={SCREEN_SIZE.width / 1.5} w={steps == 0 ? SCREEN_SIZE.width : SCREEN_SIZE.width - ESPacing.space_100} />
+        <RNText mTop={ESPacing.space_8} size={EFontSize.size_18} fontWeight={EFontWeight.medium}>{subTitle}</RNText>
+        <RNText mTop={ESPacing.space_16} size={EFontSize.primary} color={EColors.secondText}>{desc}</RNText>
       </>
     )
   }
@@ -43,15 +43,15 @@ const Welcome = ({ navigation }: INavigation) => {
 
   const DotWelcome = ({ isActive }: { isActive: boolean }) => {
     return <RNView
-      h={size}
-      w={size}
-      borderColor={isActive ? COLORS.primary : COLORS.primaryText}
-      borderRadius={5} borderWidth={1} color={isActive ? COLORS.primary : COLORS.bgPage} mHoz={15} />
+      h={ESPacing.space_10}
+      w={ESPacing.space_10}
+      borderColor={isActive ? EColors.primary : EColors.primaryText}
+      borderRadius={5} borderWidth={1} color={isActive ? EColors.primary : EColors.bgPage} mHoz={ESPacing.space_15} />
   }
 
   const onNext = async () => {
     if (steps === 2) {
-      useSetLocalStore(CONSTANTS.LOCAL_STORE_KEY.WELCOME, true)
+      useSetLocalStore(CONSTANTS.LOCAL_STORE_KEY.welcome, true)
       pushToLogin({ navigation })
     } else {
       setSteps(steps + 1)
@@ -69,12 +69,12 @@ const Welcome = ({ navigation }: INavigation) => {
       <RNView fill center>
         {renderItem()}
         <RNView center>
-          <RNView isRow mTop={60}  >
+          <RNView isRow mTop={ESPacing.space_60}  >
             <DotWelcome isActive={steps === 0} />
             <DotWelcome isActive={steps === 1} />
             <DotWelcome isActive={steps === 2} />
           </RNView>
-          <RNButton mTop={32} title={translate(steps === 2 ? 'AUTH.login' : 'APP.nextStep')} onPress={onNext} pHoz={100} />
+          <RNButton mTop={32} title={translate(steps === 2 ? 'AUTH.login' : 'APP.nextStep')} onPress={onNext} pHoz={ESPacing.space_100} />
         </RNView>
       </RNView>
     </ContainerPage>

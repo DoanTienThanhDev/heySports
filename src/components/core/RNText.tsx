@@ -1,26 +1,26 @@
 import { StyleSheet, Text } from 'react-native'
 import React from 'react'
 
-import { COLORS, FONTS } from 'themes'
+import { EColors, EFontSize, EFontWeight, ESPacing, ETextAlign } from 'themes'
 
 interface IRNText {
-  size?: number,
-  style?: any,
   children?: React.ReactNode,
+  size?: EFontSize,
   fill?: boolean,
-  color?: string,
-  w?: number,
-  h?: number,
-  margin?: number,
-  mTop?: number,
-  mLeft?: number,
-  mRight?: number,
-  mBottom?: number,
   underLine?: boolean,
-  lines?: number,
-  textAlign?: 'auto' | 'center' | 'justify' | 'left' | 'right',
-  fontWeight?: '200' | '400' | '600' | '900' | 'normal' | 'bold',
-  onPress?: () => void
+  color?: EColors | string,
+  w?: ESPacing,
+  h?: ESPacing,
+  margin?: ESPacing,
+  mTop?: ESPacing,
+  mLeft?: ESPacing,
+  mRight?: ESPacing,
+  mBottom?: ESPacing,
+  lines?: ESPacing,
+  textAlign?: ETextAlign,
+  fontWeight?: EFontWeight,
+  onPress?: () => void,
+  style?: any
 }
 
 const RNText = ({ children,
@@ -71,12 +71,12 @@ export default RNText
 
 const styles = StyleSheet.create({
   container: {
-    fontSize: FONTS.s14,
-    color: COLORS.primaryText,
-    fontWeight: "normal"
+    fontSize: EFontSize.primary,
+    color: EColors.primaryText,
+    fontWeight: EFontWeight.normal,
   },
   fill: {
-    flex: 1,
+    flex: ESPacing.space_1,
   },
   underLine: {
     textDecorationLine: 'underline'

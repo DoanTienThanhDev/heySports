@@ -6,13 +6,17 @@
     "subTitleSecondIntro": "",
     "subTitleFinalIntro": "",
     "descFirstIntro": "We connect people with the same passion",
-    "descSecondIntro":"",
-    "descFinalIntro":""
-
+    "descSecondIntro": "",
+    "descFinalIntro": ""
   },
   "COMMON": {
     "success": "Success",
-    "search": "Search"
+    "search": "Search",
+    "and": " and ",
+    "or": "OR",
+    "continue": "Continue",
+    "submit": "Submit",
+    "cancel": "Cancel"
   },
   "AUTH": {
     "login": "Login",
@@ -26,8 +30,8 @@
     "passwordMin": "Password min is 8 characters",
     "passwordMax": "Password max is 32 characters",
     "forgotPassword": "Forgot password",
+    "signUp": "Sing Up",
     "register": "Register",
-    "orLoginWith": "or login with",
     "fullName": "Full name",
     "fullNameHint": "Please enter full name",
     "fullNameRequired": "Full name is required field",
@@ -41,6 +45,18 @@
     "confirmPassword": "Confirm password",
     "confirmPasswordHint": "Please enter confirm password",
     "confirmPasswordNotMatch": "Password not matches",
-    "registerWith": "Register with"
+    "msgEmail": "Don't worry! It happens. Please enter the address email with your account.",
+    "send": "Send",
+    "reSend": "Re-send",
+    "notReceiverEmail": "No email received",
+    "msgSignUpRequired": "By sign up, you're agree to our ",
+    "temps&conditions": "Temps and Conditions",
+    "privacyPolicy": "Privacy Policy",
+    "newToLogistics": "New to Logistics? ",
+    "joinedUsBefore": "Joined us before? ",
+    "currentPassword": "Current Password",
+    "currentPasswordHint": "Please enter current password",
+    "currentPasswordRequired": "Current password is required field",
+    "enterEmail": "Enter Email"
   }
 }

@@ -1,12 +1,12 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, Keyboard, Platform } from 'react-native'
+import { SafeAreaView, StyleSheet, Keyboard } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { RNPressable, RNView } from 'components/core';
-import { COLORS, SCREENS } from 'themes'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { EColors, SCREEN_SIZE } from 'themes'
 interface IRNContainer {
   children: React.ReactNode,
-  color?: string,
+  color?: EColors,
   isLoading?: boolean,
   hasInput?: boolean
 }
@@ -20,7 +20,7 @@ const RNContainer = ({ children, color, isLoading, hasInput }: IRNContainer) => 
         enableOnAndroid={true}
         style={styles.container}
       >
-        <SafeAreaView style={[styles.container, !isLoading && { backgroundColor: color || COLORS.bgPage }]}>
+        <SafeAreaView style={[styles.container, !isLoading && { backgroundColor: color || EColors.bgPage }]}>
           <RNPressable fill onPress={Keyboard.dismiss}>
             {children}
           </RNPressable>
@@ -31,7 +31,7 @@ const RNContainer = ({ children, color, isLoading, hasInput }: IRNContainer) => 
 
   return (
     <RNView loading={isLoading} fill isPage>
-      <SafeAreaView style={[styles.container, !isLoading && { backgroundColor: color || COLORS.bgPage }]}>
+      <SafeAreaView style={[styles.container, !isLoading && { backgroundColor: color || EColors.bgPage }]}>
         {children}
       </SafeAreaView>
     </RNView>
@@ -42,8 +42,8 @@ export default RNContainer
 
 const styles = StyleSheet.create({
   container: {
-    width: SCREENS.width,
-    height: SCREENS.height,
-    backgroundColor: COLORS.bgPage
+    width: SCREEN_SIZE.width,
+    height: SCREEN_SIZE.height,
+    backgroundColor: EColors.bgPage
   }
 })
