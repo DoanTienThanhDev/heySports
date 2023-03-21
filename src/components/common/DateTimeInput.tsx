@@ -1,25 +1,25 @@
-import { StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import { RNIcon, RNText, RNView, RNPressable } from 'components/core'
 
-import { COLORS, FONTS, SCREENS } from 'themes'
+import { EColors, EFontSize, EFontWeight, ESPacing } from 'themes'
+import { EIcons } from 'utils';
 
 interface IDateTimeInput {
   title: string,
   date?: string | Date,
   mode?: ITimeMode,
-  placeholder?: string,
-  w?: number,
-  h?: number,
-  margin?: number,
-  mTop?: number,
-  mLeft?: number,
-  mRight?: number,
-  mBottom?: number,
-  lines?: number,
   errorMessage?: string,
+  placeholder?: string,
+  w?: ESPacing,
+  h?: ESPacing,
+  margin?: ESPacing,
+  mTop?: ESPacing,
+  mLeft?: ESPacing,
+  mRight?: ESPacing,
+  mBottom?: ESPacing,
+  lines?: ESPacing,
   isTouch?: boolean,
   onSelectDateTime: (time: Date) => void,
 }
@@ -54,31 +54,31 @@ const DateTimeInput = ({
   return (
     < >
       <RNPressable
-        borderRadius={FONTS.primaryRadius}
+        borderRadius={ESPacing.space_radius}
         isBorder
-        h={h || FONTS.height}
+        h={h || ESPacing.space_height}
         w={w}
-        mTop={mTop || FONTS.s16}
+        mTop={mTop || ESPacing.space_16}
         mLeft={mLeft}
         mRight={mRight}
         mBottom={mBottom}
-        pVer={FONTS.s4}
-        pHoz={FONTS.s6}
+        pVer={ESPacing.space_4}
+        pHoz={ESPacing.space_6}
         isRow
-        borderColor={date ? COLORS.primary : COLORS.border}
+        borderColor={date ? EColors.primary : EColors.border}
         onPress={onVisible(true)}
         hozCenter
       >
-        <RNIcon name={'calendar'} size={20} color={COLORS.gray} />
-        <RNView fill mLeft={6}>
+        <RNIcon name={EIcons.calendar} size={EFontSize.size_20} color={EColors.gray} />
+        <RNView fill mLeft={ESPacing.space_6}>
           {!!date && !!title &&
-            <RNText size={14} color={COLORS.primaryText} fontWeight="600">{title}</RNText>
+            <RNText size={EFontSize.primary} color={EColors.primaryText} fontWeight={EFontWeight.medium}>{title}</RNText>
           }
-          <RNText color={date ? COLORS.primaryText : COLORS.secondText}>{`${date || placeholder}`}</RNText>
+          <RNText color={date ? EColors.primaryText : EColors.secondText}>{`${date || placeholder}`}</RNText>
         </RNView>
       </RNPressable>
       {
-        !!errorMessage && isTouch && <RNText mTop={4} fontWeight='400' color={COLORS.error} size={FONTS.s13}>
+        !!errorMessage && isTouch && <RNText mTop={4} fontWeight={EFontWeight.normal} color={EColors.error} size={EFontSize.size_13}>
           {errorMessage}
         </RNText>
       }
@@ -94,28 +94,3 @@ const DateTimeInput = ({
 }
 
 export default DateTimeInput
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    fontSize: FONTS.s14,
-    fontWeight: "400",
-  },
-  btnRight: {
-    paddingHorizontal: 5
-  },
-  model: {
-    height: SCREENS.height / 2
-  },
-  modelContent: {
-    justifyContent: 'flex-end'
-  },
-  showData: {
-    borderTopLeftRadius: FONTS.s32,
-    borderTopRightRadius: FONTS.s32,
-    maxHeight: SCREENS.height - 100
-  },
-  flatList: {
-    marginTop: 10
-  }
-})

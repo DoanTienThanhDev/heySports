@@ -4,8 +4,8 @@ import { StyleSheet } from 'react-native';
 import { ContainerPage } from 'components/common';
 import { RNButton, RNImage, RNInput, RNText, RNView, RNContainer } from 'components/core';
 
-import { COLORS, SCREENS } from 'themes';
 import { IPage } from 'screens/schemes';
+import { EColors } from 'themes';
 
 
 const Home = ({ navigation }: IPage) => {
@@ -18,7 +18,7 @@ const Home = ({ navigation }: IPage) => {
 
   return (
     <RNView fill>
-      <RNView fill color={COLORS.primary}>
+      <RNView fill color={EColors.primary}>
 
       </RNView>
       <RNView flex={3}>

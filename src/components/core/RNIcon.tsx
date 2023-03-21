@@ -5,31 +5,32 @@ import IconIonicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { FONTS } from 'themes';
+import { EFontSize, EColors } from 'themes';
+import { EIcons, EIconTypes } from 'utils';
 
 interface IRNIcon {
-  name: string,
-  color?: string,
-  size?: number,
-  type?: string,
+  name: EIcons,
+  color?: EColors | string,
+  size?: EFontSize,
+  type?: EIconTypes,
   onPress?: () => void
 }
 
 const RNIcon = ({ type, name, size, color, onPress }: IRNIcon) => {
   const Icon = () => {
     switch (type) {
-      case 'FontAwesome':
-        return <IconFontAwesome name={name} size={size || FONTS.s14} color={color} onPress={onPress} />
-      case 'AntDesign':
-        return <IconAntDesign name={name} size={size || FONTS.s14} color={color} onPress={onPress} />
-      case 'Ionicons':
-        return <IconIonicons name={name} size={size || FONTS.s14} color={color} onPress={onPress} />
-      case 'FontAwesome5':
-        return <FontAwesome5 name={name} size={size || FONTS.s14} color={color} onPress={onPress} />
-      case 'MaterialCommunityIcons':
-        return <MaterialCommunityIcons name={name} size={size || FONTS.s14} color={color} onPress={onPress} />
+      case EIconTypes.fontAwesome:
+        return <IconFontAwesome name={name} size={size || EFontSize.size_18} color={color} onPress={onPress} />
+      case EIconTypes.antDesign:
+        return <IconAntDesign name={name} size={size || EFontSize.size_18} color={color} onPress={onPress} />
+      case EIconTypes.ionIcon:
+        return <IconIonicons name={name} size={size || EFontSize.size_18} color={color} onPress={onPress} />
+      case EIconTypes.fontAwesome5:
+        return <FontAwesome5 name={name} size={size || EFontSize.size_18} color={color} onPress={onPress} />
+      case EIconTypes.materialCommunityIcons:
+        return <MaterialCommunityIcons name={name} size={size || EFontSize.size_18} color={color} onPress={onPress} />
       default:
-        return <IconFontAwesome name={name} size={size || FONTS.s14} color={color} onPress={onPress} />
+        return <IconFontAwesome name={name} size={size || EFontSize.size_18} color={color} onPress={onPress} />
     }
   }
 

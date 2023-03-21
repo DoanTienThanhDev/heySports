@@ -1,6 +1,11 @@
-import COLORS from './colors'
-import FONTS from './fonts'
-import SCREENS from './screens'
-import IMAGES from './images'
+import EColors from './colors';
+import SCREEN_SIZE from './screenSize';
+import IMAGES from './images';
+import {
+  EFontSize,
+  EFontWeight,
+  ETextAlign,
+  ESPacing
+} from './fonts';
 
-export { COLORS, FONTS, SCREENS, IMAGES }
+export { SCREEN_SIZE, IMAGES, EColors, EFontSize, ETextAlign, EFontWeight, ESPacing }

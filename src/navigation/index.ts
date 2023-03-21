@@ -1,8 +1,9 @@
 import { IPush, IPopScreen, IPopToRoot } from './schemes';
 import { INavigation } from 'navigation/schemes';
+import { SCREENS_NAME } from 'utils';
 
-const pushScreen = ({ screen, navigation }: IPush) => {
-  navigation.navigate(screen)
+const pushScreen = <T>({ screen, navigation, params }: IPush<T>) => {
+  navigation.navigate(screen, params)
 }
 
 const popScreen = ({ navigation }: IPopScreen) => {
@@ -14,11 +15,11 @@ const popToRoot = ({ navigation }: IPopToRoot) => {
 }
 
 const pushToMain = ({ navigation }: INavigation) => {
-  pushScreen({ screen: 'Main', navigation })
+  pushScreen({ screen: SCREENS_NAME.main, navigation })
 }
 
 const pushToLogin = ({ navigation }: INavigation) => {
-  pushScreen({ screen: 'Login', navigation })
+  pushScreen({ screen: SCREENS_NAME.login, navigation })
 }
 
 

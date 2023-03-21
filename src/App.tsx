@@ -1,11 +1,21 @@
-import React, { useEffect, useState, useCallback } from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import React, { useEffect, useState, useCallback } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Welcome, Login, Register, ForgotPassword, Logout } from 'screens'
 import BottomTabs from 'navigation/mainTabs';
+
+import {
+  Welcome,
+  Login,
+  Register,
+  ForgotPassword,
+  Logout,
+  Password,
+  EnterCode
+} from 'screens';
+
 import { useGetLocalStore } from './hooks'
-import { CONSTANTS } from 'utils';
+import { CONSTANTS, SCREENS_NAME } from 'utils';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +24,9 @@ const SCREENS = {
   Register,
   ForgotPassword,
   Logout,
-  Login
+  Login,
+  Password,
+  EnterCode
 }
 
 const renderListChild = () => {
@@ -33,12 +45,12 @@ const AppStackScreen = () => {
   }, [])
 
   const getInitName = useCallback(async () => {
-    let isSkipWelcome = await useGetLocalStore(CONSTANTS.LOCAL_STORE_KEY.WELCOME)
+    let isSkipWelcome = await useGetLocalStore(CONSTANTS.LOCAL_STORE_KEY.welcome)
     if (isSkipWelcome) {
-      let isLogin = await useGetLocalStore(CONSTANTS.LOCAL_STORE_KEY.ACCESS_TOKEN)
-      setInitRouteName(isLogin ? 'Main' : 'Login')
+      let isLogin = await useGetLocalStore(CONSTANTS.LOCAL_STORE_KEY.accessToken)
+      setInitRouteName(isLogin ? SCREENS_NAME.main : SCREENS_NAME.login)
     } else {
-      setInitRouteName('Welcome')
+      setInitRouteName(SCREENS_NAME.welcome)
     }
   }, [])
 
@@ -52,7 +64,7 @@ const AppStackScreen = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen
-        name='Main'
+        name={SCREENS_NAME.main}
         component={BottomTabs}
         options={{ headerShown: false }}
       />

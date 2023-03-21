@@ -1,30 +1,32 @@
-import { StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native'
-import React from 'react'
+import { StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import React from 'react';
 
 import { RNText, RNIcon } from 'components/core';
-import { COLORS, FONTS } from 'themes'
+
+import { EColors, EFontSize, EFontWeight, ESPacing } from 'themes';
+import { EIcons } from 'utils';
 
 interface IRNButton {
   title: string,
-  style?: any,
   fill?: boolean,
-  bgColor?: string,
-  txtColor?: string,
   isLoading?: boolean,
-  loadingColor?: string,
   disable?: boolean,
-  w?: number,
-  h?: number,
-  margin?: number,
-  mTop?: number,
-  mLeft?: number,
-  mRight?: number,
-  mBottom?: number,
-  pHoz?: number,
-  icon?: string,
-  mHoz?: number,
-  mVer?: number,
-  onPress: () => void
+  bgColor?: EColors,
+  txtColor?: EColors,
+  loadingColor?: EColors,
+  w?: ESPacing,
+  h?: ESPacing,
+  margin?: ESPacing,
+  mTop?: ESPacing,
+  mLeft?: ESPacing,
+  mRight?: ESPacing,
+  mBottom?: ESPacing,
+  pHoz?: ESPacing,
+  mHoz?: ESPacing,
+  mVer?: ESPacing,
+  icon?: EIcons,
+  onPress: () => void,
+  style?: any
 }
 
 const RNButton = ({
@@ -73,10 +75,10 @@ const RNButton = ({
     >
       {
         isLoading ?
-          <ActivityIndicator size={'small'} color={loadingColor || COLORS.bgPage} /> :
+          <ActivityIndicator size={'small'} color={loadingColor || EColors.bgPage} /> :
           icon ?
-            <RNIcon name={icon} size={FONTS.s24} /> :
-            <RNText fontWeight='bold' color={txtColor || COLORS.bgPage} size={FONTS.s16}>{title}</RNText>
+            <RNIcon name={icon} size={EFontSize.size_24} /> :
+            <RNText fontWeight={EFontWeight.bold} color={txtColor || EColors.bgPage} size={EFontSize.size_16}>{title}</RNText>
       }
     </TouchableOpacity>
   )
@@ -86,13 +88,13 @@ export default RNButton
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 16,
+    marginTop: ESPacing.space_16,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLORS.primary,
-    paddingHorizontal: FONTS.s24,
-    height: 50,
-    borderRadius: FONTS.s8
+    backgroundColor: EColors.primary,
+    paddingHorizontal: ESPacing.space_24,
+    height: ESPacing.space_50,
+    borderRadius: ESPacing.space_8
   }
 })

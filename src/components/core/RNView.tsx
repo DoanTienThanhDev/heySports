@@ -1,42 +1,42 @@
 import { StyleSheet, View, ActivityIndicator, FlexStyle } from 'react-native'
 import React from 'react'
 
-import { COLORS, SCREENS } from 'themes'
+import { EColors, ESPacing, SCREEN_SIZE } from 'themes'
 interface IRNView {
   children?: React.ReactNode,
-  fill?: boolean,
-  color?: string,
-  w?: number,
-  h?: number,
-  margin?: number,
-  mTop?: number,
-  mLeft?: number,
-  mRight?: number,
-  mBottom?: number,
-  padding?: number,
-  pTop?: number,
-  pLeft?: number,
-  pRight?: number,
-  pBottom?: number,
+  color?: EColors,
+  bgLoading?: EColors,
+  borderColor?: EColors,
+  w?: ESPacing,
+  h?: ESPacing,
+  margin?: ESPacing,
+  mTop?: ESPacing,
+  mLeft?: ESPacing,
+  mRight?: ESPacing,
+  mBottom?: ESPacing,
+  padding?: ESPacing,
+  pTop?: ESPacing,
+  pLeft?: ESPacing,
+  pRight?: ESPacing,
+  pBottom?: ESPacing,
+  pHoz?: ESPacing,
+  pVer?: ESPacing,
+  mHoz?: ESPacing,
+  mVer?: ESPacing,
+  borderTop?: ESPacing,
+  flex?: ESPacing,
+  borderRadius?: ESPacing,
+  borderWidth?: ESPacing,
   loading?: boolean,
-  bgLoading?: string,
   center?: boolean,
   centerHoz?: boolean,
   centerVer?: boolean,
-  pHoz?: number,
-  pVer?: number,
-  mHoz?: number,
-  mVer?: number,
   isPage?: boolean,
-  borderRadius?: number,
-  borderColor?: string,
-  borderWidth?: number,
+  fill?: boolean,
   isRow?: boolean,
-  style?: any,
-  flex?: number,
   hozContent?: FlexStyle['alignItems'],
   verContent?: FlexStyle['justifyContent'],
-  borderTop?: number,
+  style?: any
 }
 
 const RNView = ({
@@ -85,30 +85,30 @@ const RNView = ({
         center && styles.center,
         centerHoz && styles.centerHoz,
         centerVer && styles.centerVer,
-        !!color && { backgroundColor: color },
-        !!w && { width: w },
-        !!h && { height: h },
-        !!margin && { margin: margin },
-        !!mTop && { marginTop: mTop },
-        !!mBottom && { marginBottom: mBottom },
-        !!mLeft && { marginLeft: mLeft },
-        !!mRight && { marginRight: mRight },
-        !!padding && { padding: padding },
-        !!pTop && { paddingTop: pTop },
-        !!pBottom && { paddingBottom: pBottom },
-        !!pLeft && { paddingLeft: pLeft },
-        !!pRight && { paddingRight: pRight },
-        !!pHoz && { paddingHorizontal: pHoz },
-        !!pVer && { paddingVertical: pVer },
-        !!mHoz && { marginHorizontal: mHoz },
-        !!mVer && { marginVertical: mVer },
-        !!borderRadius && { borderRadius: borderRadius, borderColor: borderColor || COLORS.border, borderWidth: borderWidth },
+        color && { backgroundColor: color },
+        w && { width: w },
+        h && { height: h },
+        margin && { margin: margin },
+        mTop && { marginTop: mTop },
+        mBottom && { marginBottom: mBottom },
+        mLeft && { marginLeft: mLeft },
+        mRight && { marginRight: mRight },
+        padding && { padding: padding },
+        pTop && { paddingTop: pTop },
+        pBottom && { paddingBottom: pBottom },
+        pLeft && { paddingLeft: pLeft },
+        pRight && { paddingRight: pRight },
+        pHoz && { paddingHorizontal: pHoz },
+        pVer && { paddingVertical: pVer },
+        mHoz && { marginHorizontal: mHoz },
+        mVer && { marginVertical: mVer },
+        borderRadius && { borderRadius: borderRadius, borderColor: borderColor || EColors.border, borderWidth: borderWidth },
         flex && { flex: flex },
         hozContent && { alignContent: verContent },
         verContent && { justifyContent: hozContent },
         isRow && { flexDirection: 'row' },
-        loading && { backgroundColor: bgLoading || COLORS.bgLoading, opacity: 0.8 },
-        borderTop && { borderTopLeftRadius: borderTop, borderTopRightRadius: borderTop, borderColor: borderColor || COLORS.border, borderWidth: borderWidth || 1 },
+        loading && { backgroundColor: bgLoading || EColors.bgLoading, opacity: 0.8 },
+        borderTop && { borderTopLeftRadius: borderTop, borderTopRightRadius: borderTop, borderColor: borderColor || EColors.border, borderWidth: borderWidth || ESPacing.space_border },
         { ...more }
       ]
       }>
@@ -117,7 +117,7 @@ const RNView = ({
       {
         loading && <View style={[styles.containerLoading]}>
           <View style={styles.displayLoading}>
-            <ActivityIndicator color={COLORS.primary} size="large" />
+            <ActivityIndicator color={EColors.primary} size="large" />
           </View>
         </View>
       }
@@ -129,10 +129,10 @@ export default RNView
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLORS.bgPage
+    backgroundColor: EColors.bgPage
   },
   fill: {
-    flex: 1,
+    flex: ESPacing.space_1,
   },
   center: {
     justifyContent: 'center',
@@ -148,19 +148,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    left: 0,
-    top: 0,
-    right: 0,
-    bottom: 0
+    left: ESPacing.space_0,
+    top: ESPacing.space_0,
+    right: ESPacing.space_0,
+    bottom: ESPacing.space_0
   },
   displayLoading: {
-    backgroundColor: COLORS.bgPage,
-    width: (SCREENS.width - 50) / 3,
-    height: (SCREENS.width - 50) / 3,
+    backgroundColor: EColors.bgPage,
+    width: (SCREEN_SIZE.width - ESPacing.space_50) / ESPacing.space_3,
+    height: (SCREEN_SIZE.width - ESPacing.space_50) / ESPacing.space_3,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 8,
-    borderColor: COLORS.primary,
+    borderRadius: ESPacing.space_8,
+    borderColor: EColors.primary,
     borderWidth: 0.2
   }
 })

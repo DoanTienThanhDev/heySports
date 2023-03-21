@@ -15,7 +15,7 @@
     "configFile": "./.eslintrc.json"
   },
   "editor.tabSize": 2,
-  "cSpell.words": ["chatbox", "datetime", "Ionicons", "Pressable"],
+  "cSpell.words": ["chatbox", "datetime", "Doan", "Ionicons", "Pressable"],
   "editor.wordWrapColumn": 100,
   "typescript.preferences.importModuleSpecifier": "relative",
   "javascript.preferences.importModuleSpecifier": "relative",

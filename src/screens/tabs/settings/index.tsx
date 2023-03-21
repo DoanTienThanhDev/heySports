@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { RNButton, RNContainer, RNImage, RNText, RNView } from 'components/core'
 import { ContainerPage } from 'components/common'
 
-import { COLORS, IMAGES, SCREENS } from 'themes'
+import { IMAGES, EColors } from 'themes'
 import { IPage } from 'screens/schemes'
 import { useGetLocalStore, useRemoveLocalStore } from 'hooks'
 import { CONSTANTS } from 'utils';
@@ -21,7 +21,7 @@ const Settings = ({ navigation }: ISettings) => {
   }, [])
 
   const onGetUserInfo = useCallback(async () => {
-    let userInfo = await useGetLocalStore<IUserLogin>(CONSTANTS.LOCAL_STORE_KEY.ACCESS_TOKEN)
+    let userInfo = await useGetLocalStore<IUserLogin>(CONSTANTS.LOCAL_STORE_KEY.accessToken)
     if (userInfo) {
       setUser(userInfo)
     }
@@ -30,16 +30,16 @@ const Settings = ({ navigation }: ISettings) => {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-      useRemoveLocalStore(CONSTANTS.LOCAL_STORE_KEY.WELCOME)
-      useRemoveLocalStore(CONSTANTS.LOCAL_STORE_KEY.ACCESS_TOKEN)
+      useRemoveLocalStore(CONSTANTS.LOCAL_STORE_KEY.welcome)
+      useRemoveLocalStore(CONSTANTS.LOCAL_STORE_KEY.accessToken)
       pushToLogin({ navigation })
     }, 1000);
 
   }
   return (
-    <RNView fill color={COLORS.primary}>
+    <RNView fill color={EColors.primary}>
       <RNView fill />
-      <RNView flex={8} color={COLORS.bgPage} borderTop={50}>
+      <RNView flex={8} color={EColors.bgPage} borderTop={50}>
         <RNButton title={'Logout'} onPress={onLogout} isLoading={loading} />
       </RNView>
     </RNView >

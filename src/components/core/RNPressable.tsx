@@ -1,29 +1,31 @@
 import { Pressable, StyleSheet } from 'react-native'
 import React from 'react'
 
+import { EColors, ESPacing } from 'themes';
+
 interface IRNPressable {
-  style?: any,
   children?: React.ReactNode,
-  color?: string,
-  isBorder?: boolean,
-  colorBorder?: string,
-  borderRadius?: number,
-  center?: boolean,
-  mHoz?: number,
-  mVer?: number,
-  mTop?: number,
-  mBottom?: number,
-  mLeft?: number,
-  mRight?: number,
-  w?: number,
-  h?: number,
+  color?: EColors,
+  borderColor?: EColors,
+  colorBorder?: EColors,
+  borderRadius?: ESPacing,
+  mHoz?: ESPacing,
+  mVer?: ESPacing,
+  mTop?: ESPacing,
+  mBottom?: ESPacing,
+  mLeft?: ESPacing,
+  mRight?: ESPacing,
+  w?: ESPacing,
+  h?: ESPacing,
   fill?: boolean,
-  pVer?: number,
-  pHoz?: number,
-  borderColor?: string,
+  pVer?: ESPacing,
+  pHoz?: ESPacing,
   hozCenter?: boolean,
   isRow?: boolean,
-  onPress?: () => void
+  isBorder?: boolean,
+  center?: boolean,
+  onPress?: () => void,
+  style?: any
 }
 
 const RNPressable = ({
@@ -56,7 +58,7 @@ const RNPressable = ({
       center && styles.center,
       isRow && styles.row,
       color && { backgroundColor: color },
-      isBorder && { borderWidth: 1, borderColor: borderColor || colorBorder, borderRadius: borderRadius },
+      isBorder && { borderWidth: ESPacing.space_border, borderColor: borderColor || colorBorder, borderRadius: borderRadius },
       mHoz && { marginHorizontal: mHoz },
       mVer && { marginVertical: mVer },
       mTop && { marginTop: mTop },
@@ -65,7 +67,7 @@ const RNPressable = ({
       mRight && { marginRight: mRight },
       w && { width: w },
       h && { height: h },
-      fill && { flex: 1 },
+      fill && { flex: ESPacing.space_1 },
       pVer && { paddingVertical: pVer },
       pHoz && { paddingHorizontal: pHoz },
       hozCenter && { alignItems: 'center' }
